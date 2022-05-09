@@ -1,0 +1,15 @@
+Mon May  9 17:00:17 2022	[31merror[0m	Logger	logger/logger_test.go:15	cache-go/logger.TestLogger	err is:	{"hhh": "lqf"}
+cache-go/logger.TestLogger
+	/home/lqf/golang/GoProject/cache-go/logger/logger_test.go:15
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Mon May  9 17:01:29 2022	[31merror[0m	Logger	logger/logger_test.go:15	cache-go/logger.TestLogger	err is:	{"hhh": "lqf"}
+cache-go/logger.TestLogger
+	/home/lqf/golang/GoProject/cache-go/logger/logger_test.go:15
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Mon May  9 17:03:01 2022	ERROR	Logger	logger/logger_test.go:15	cache-go/logger.TestLogger	err is:	{"hhh": "lqf"}
+cache-go/logger.TestLogger
+	/home/lqf/golang/GoProject/cache-go/logger/logger_test.go:15
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439

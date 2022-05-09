@@ -1,0 +1,93 @@
+Mon May  9 17:00:17 2022	[31mfatal[0m	Logger	logger/logger_test.go:16	cache-go/logger.TestLogger	err is:	{"hhh": "lqf"}
+cache-go/logger.TestLogger
+	/home/lqf/golang/GoProject/cache-go/logger/logger_test.go:16
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Mon May  9 17:01:29 2022	[31mfatal[0m	Logger	logger/logger_test.go:16	cache-go/logger.TestLogger	err is:	{"hhh": "lqf"}
+cache-go/logger.TestLogger
+	/home/lqf/golang/GoProject/cache-go/logger/logger_test.go:16
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Mon May  9 17:03:01 2022	FATAL	Logger	logger/logger_test.go:16	cache-go/logger.TestLogger	err is:	{"hhh": "lqf"}
+cache-go/logger.TestLogger
+	/home/lqf/golang/GoProject/cache-go/logger/logger_test.go:16
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Mon May  9 17:51:04 2022	FATAL	Logger	net/poller.go:71	cache-go/net.(*poller).Poller	Poller err
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:71
+Mon May  9 17:55:23 2022	FATAL	Logger	net/poller_test.go:34	cache-go/net.TestNewPoller	addTaskError
+cache-go/net.TestNewPoller
+	/home/lqf/golang/GoProject/cache-go/net/poller_test.go:34
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Mon May  9 18:25:55 2022	FATAL	Logger	net/asyncQueue_test.go:134	cache-go/net.TestAsyncQueuePop	n should  be nil	{"i": 101}
+cache-go/net.TestAsyncQueuePop
+	/home/lqf/golang/GoProject/cache-go/net/asyncQueue_test.go:134
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Mon May  9 18:26:16 2022	FATAL	Logger	net/asyncQueue_test.go:132	cache-go/net.TestAsyncQueuePop	n should not be nil	{"i": 5000}
+cache-go/net.TestAsyncQueuePop
+	/home/lqf/golang/GoProject/cache-go/net/asyncQueue_test.go:132
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Mon May  9 18:27:47 2022	FATAL	Logger	net/poller_test.go:52	cache-go/net.TestPoller	i should be 200
+cache-go/net.TestPoller
+	/home/lqf/golang/GoProject/cache-go/net/poller_test.go:52
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Mon May  9 18:28:50 2022	FATAL	Logger	net/poller_test.go:52	cache-go/net.TestPoller	i should be 200
+cache-go/net.TestPoller
+	/home/lqf/golang/GoProject/cache-go/net/poller_test.go:52
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Mon May  9 18:28:56 2022	FATAL	Logger	net/poller_test.go:52	cache-go/net.TestPoller	i should be 200
+cache-go/net.TestPoller
+	/home/lqf/golang/GoProject/cache-go/net/poller_test.go:52
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Mon May  9 18:29:06 2022	FATAL	Logger	net/poller_test.go:52	cache-go/net.TestPoller	i should be 200
+cache-go/net.TestPoller
+	/home/lqf/golang/GoProject/cache-go/net/poller_test.go:52
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Mon May  9 18:29:26 2022	FATAL	Logger	net/poller_test.go:52	cache-go/net.TestPoller	i should be 200
+cache-go/net.TestPoller
+	/home/lqf/golang/GoProject/cache-go/net/poller_test.go:52
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Mon May  9 18:30:15 2022	FATAL	Logger	net/poller_test.go:52	cache-go/net.TestPoller	i should be 200
+cache-go/net.TestPoller
+	/home/lqf/golang/GoProject/cache-go/net/poller_test.go:52
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Mon May  9 18:30:29 2022	FATAL	Logger	net/poller_test.go:52	cache-go/net.TestPoller	i should be 200
+cache-go/net.TestPoller
+	/home/lqf/golang/GoProject/cache-go/net/poller_test.go:52
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Mon May  9 18:37:20 2022	FATAL	Logger	net/poller_test.go:52	cache-go/net.TestPoller	i should be 200
+cache-go/net.TestPoller
+	/home/lqf/golang/GoProject/cache-go/net/poller_test.go:52
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Mon May  9 18:38:08 2022	FATAL	Logger	net/poller_test.go:53	cache-go/net.TestPoller	k should be 200
+cache-go/net.TestPoller
+	/home/lqf/golang/GoProject/cache-go/net/poller_test.go:53
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Mon May  9 18:38:48 2022	FATAL	Logger	net/poller_test.go:53	cache-go/net.TestPoller	k should be 200,but is %d	{"k": 299}
+cache-go/net.TestPoller
+	/home/lqf/golang/GoProject/cache-go/net/poller_test.go:53
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Mon May  9 18:39:51 2022	FATAL	Logger	net/poller_test.go:53	cache-go/net.TestPoller	k should be 200,but is	{"k": 200}
+cache-go/net.TestPoller
+	/home/lqf/golang/GoProject/cache-go/net/poller_test.go:53
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Mon May  9 18:41:06 2022	FATAL	Logger	net/poller_test.go:53	cache-go/net.TestPoller	k should be nums,but is	{"k": 200, "nums": 201}
+cache-go/net.TestPoller
+	/home/lqf/golang/GoProject/cache-go/net/poller_test.go:53
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
