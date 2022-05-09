@@ -10,4 +10,11 @@ type Conn interface {
 	Chan() <-chan proto.Message
 	Write(p []byte) (n int, err error)
 	Close() error
+	PeekAll() []byte
+	ShiftN(n int)
+}
+
+type conn struct {
+	fd    int
+	codeC CodeC
 }
