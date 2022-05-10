@@ -1,6 +1,7 @@
 package net
 
 import (
+	"cache-go/net/pool/slicePool"
 	"encoding/binary"
 	"math"
 )
@@ -83,7 +84,7 @@ func (LBC *LengthFieldBasedFrameCodec) Encode(bytes []byte) ([]byte, error) {
 		return nil, ErrorInvalidLengthFieldLength
 	}
 
-	val := make([]byte, len(data)+len(bytes))
+	val := slicePool.Get(len(data) + len(bytes))
 	copy(val, data)
 	copy(val[len(data):], bytes)
 
@@ -118,7 +119,7 @@ func (LBC *LengthFieldBasedFrameCodec) Decode(c Conn) ([]byte, error) {
 		return nil, ErrorBytesLengthTooShort
 	}
 
-	val := make([]byte, length)
+	val := slicePool.Get(int(length))
 	data := bytes[:length]
 
 	c.ShiftN(len(data) + int(LBC.deCoderConfig.InitialBytesToStrip))

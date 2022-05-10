@@ -2,15 +2,18 @@ package net
 
 import (
 	"bytes"
+	"cache-go/net/pool/slicePool"
 	"context"
 	"fmt"
 	"github.com/golang/protobuf/proto"
 	"math/rand"
 	"testing"
+	"time"
 )
 
 type testConn struct {
 	bytes []byte
+	size  int
 }
 
 func (tC *testConn) Get(ctx context.Context, in proto.Message, out proto.Message) error {
@@ -112,13 +115,16 @@ func TestLengthFieldBasedFrameCodec(t *testing.T) {
 }
 
 func TestLengthFieldBasedFrameCodec64(t *testing.T) {
-
+	rand.Seed(time.Now().UnixMilli())
 	//-----------------lengthField=64----------------------//
 	{
-		nums := rand.Intn(1 << 31)
-		data := make([]byte, 0, nums)
-		for i := 1; i <= nums; i++ {
-			data = append(data, byte(i))
+		nums := rand.Intn(1 << 25)
+		nums = 91005025
+		fmt.Println(nums)
+
+		data := slicePool.Get(nums)
+		for i := 0; i < nums; i++ {
+			data[i] = byte(i)
 		}
 		codec := NewLengthFieldBasedFrameCodec(&EncoderConfig{
 			IncludeLengthFieldLength: false,
@@ -130,17 +136,21 @@ func TestLengthFieldBasedFrameCodec64(t *testing.T) {
 		loop := 10
 		var err error
 		var nbyte []byte
+
+		tC.bytes = slicePool.Get(loop * (nums + 8))
+
 		for i := 0; i < loop; i++ {
 			nbyte, err = codec.Encode(data)
 			if err != nil {
 				t.Fatal(err)
 			} else {
-				newbyte := make([]byte, len(tC.bytes)+len(nbyte))
-				copy(newbyte, tC.bytes)
-				copy(newbyte[len(tC.bytes):], nbyte)
-				tC.bytes = newbyte
+				copy(tC.bytes[tC.size:], nbyte)
+				tC.size += len(nbyte)
 			}
+
+			slicePool.Put(nbyte)
 		}
+
 		for i := 0; i < loop; i++ {
 			var ans []byte
 			ans, err = codec.Decode(tC)
@@ -152,9 +162,70 @@ func TestLengthFieldBasedFrameCodec64(t *testing.T) {
 				fmt.Println("data", data)
 				t.Fatalf("ans should be same as data")
 			}
+			slicePool.Put(ans)
 		}
+
 		if len(tC.bytes) != 0 {
-			t.Fatalf("len(tC.bytes) should be 0")
+			t.Fatalf("len(tC.bytes) should be 0,but is %d", len(tC.bytes))
 		}
+
+	}
+}
+
+func TestLengthFieldBasedFrameCodec64NoPool(t *testing.T) {
+	rand.Seed(time.Now().UnixMilli())
+	//-----------------lengthField=64----------------------//
+	{
+		nums := rand.Intn(1 << 27)
+		nums = 91005025
+		fmt.Println(nums)
+
+		data := make([]byte, nums)
+		for i := 0; i < nums; i++ {
+			data[i] = byte(i)
+		}
+		codec := NewLengthFieldBasedFrameCodec(&EncoderConfig{
+			IncludeLengthFieldLength: false,
+			LengthAdjustment:         0,
+			LengthFieldLength:        64,
+		})
+		tC := &testConn{}
+
+		loop := 10
+		var err error
+		var nbyte []byte
+
+		tC.bytes = make([]byte, loop*(nums+8))
+
+		for i := 0; i < loop; i++ {
+			nbyte, err = codec.Encode(data)
+			if err != nil {
+				t.Fatal(err)
+			} else {
+				copy(tC.bytes[tC.size:], nbyte)
+				tC.size += len(nbyte)
+			}
+
+			//slicePool.Put(nbyte)
+		}
+
+		for i := 0; i < loop; i++ {
+			var ans []byte
+			ans, err = codec.Decode(tC)
+			if err != nil {
+				t.Fatal(err)
+			}
+			if !bytes.Equal(ans, data) {
+				fmt.Println("ans", ans)
+				fmt.Println("data", data)
+				t.Fatalf("ans should be same as data")
+			}
+			//slicePool.Put(ans)
+		}
+
+		if len(tC.bytes) != 0 {
+			t.Fatalf("len(tC.bytes) should be 0,but is %d", len(tC.bytes))
+		}
+
 	}
 }
