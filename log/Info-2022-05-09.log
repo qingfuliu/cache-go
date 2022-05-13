@@ -1,0 +1,3 @@
+Mon May  9 17:00:17 2022	[34minfo[0m	Logger	logger/logger_test.go:13	cache-go/logger.TestLogger	err is:	{"hhh": "lqf"}
+Mon May  9 17:01:29 2022	[34minfo[0m	Logger	logger/logger_test.go:13	cache-go/logger.TestLogger	err is:	{"hhh": "lqf"}
+Mon May  9 17:03:01 2022	INFO	Logger	logger/logger_test.go:13	cache-go/logger.TestLogger	err is:	{"hhh": "lqf"}

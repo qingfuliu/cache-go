@@ -1,0 +1,313 @@
+Fri May 13 09:09:15 2022	ERROR	Logger	net/poller.go:101	cache-go/net.(*poller).Poller	err when do urgent extra task	{"error": "server shut down"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:101
+Fri May 13 09:31:40 2022	ERROR	Logger	net/poller.go:102	cache-go/net.(*poller).Poller	err when do urgent extra task	{"error": "server shut down"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:102
+cache-go/net.TestPoller2
+	/home/lqf/golang/GoProject/cache-go/net/poller_test.go:104
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Fri May 13 09:32:29 2022	ERROR	Logger	net/poller_test.go:112	cache-go/net.TestPoller2	err is	{"error": "server shut down"}
+cache-go/net.TestPoller2
+	/home/lqf/golang/GoProject/cache-go/net/poller_test.go:112
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Fri May 13 18:42:27 2022	ERROR	Logger	net/poller.go:87	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "protocol not available"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:87
+cache-go/net.(*eventLoop).startMainReactor
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:159
+cache-go/net.(*Server).Start.func1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:83
+Fri May 13 18:45:18 2022	ERROR	Logger	net/poller.go:87	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "protocol not available"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:87
+cache-go/net.(*eventLoop).startMainReactor
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:159
+cache-go/net.(*Server).Start.func1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:84
+Fri May 13 18:46:49 2022	ERROR	Logger	net/poller.go:87	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "protocol not available"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:87
+cache-go/net.(*eventLoop).startMainReactor
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:159
+cache-go/net.(*Server).Start.func1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:84
+Fri May 13 18:52:13 2022	ERROR	Logger	net/poller.go:87	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "protocol not available"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:87
+cache-go/net.(*eventLoop).startMainReactor
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:159
+cache-go/net.(*Server).Start.func1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:84
+Fri May 13 19:09:31 2022	ERROR	Logger	net/socket.go:116	cache-go/net.TcpSocket	tcp socket err when  binding 	{"error": "address already in use"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:116
+cache-go/net.newListener
+	/home/lqf/golang/GoProject/cache-go/net/listener.go:19
+cache-go/net.NewServer
+	/home/lqf/golang/GoProject/cache-go/net/server.go:40
+cache-go/net.TestNewServer
+	/home/lqf/golang/GoProject/cache-go/net/server_test.go:8
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Fri May 13 19:09:31 2022	ERROR	Logger	net/server.go:42	cache-go/net.NewServer	init listener err	{"error": "address already in use"}
+cache-go/net.NewServer
+	/home/lqf/golang/GoProject/cache-go/net/server.go:42
+cache-go/net.TestNewServer
+	/home/lqf/golang/GoProject/cache-go/net/server_test.go:8
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Fri May 13 22:30:52 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:30:52 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:30:52 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:30:52 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:30:52 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:30:52 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:30:52 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:30:52 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:30:52 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:30:52 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:30:52 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:30:52 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:38:06 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:38:06 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:38:06 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:38:06 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:38:06 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:38:06 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:38:06 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:38:06 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:38:06 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:38:06 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:38:06 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:38:06 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:38:06 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:38:06 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:38:06 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:38:06 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:38:06 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:38:06 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:38:06 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:38:06 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:38:06 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:38:06 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:38:06 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124
+Fri May 13 22:38:06 2022	ERROR	Logger	net/poller.go:88	cache-go/net.(*poller).Poller	Poller err when excaute EpollEventFunc	{"error": "connection reset by peer"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:88
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:152
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:124

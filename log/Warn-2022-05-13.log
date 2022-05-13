@@ -1,0 +1,4 @@
+Fri May 13 18:42:27 2022	WARN	Logger	net/acceptor.go:24	cache-go/net.(*Server).accept	accept err	{"error": "protocol not available"}
+Fri May 13 18:45:18 2022	WARN	Logger	net/acceptor.go:24	cache-go/net.(*Server).accept	accept err	{"error": "protocol not available"}
+Fri May 13 18:46:49 2022	WARN	Logger	net/acceptor.go:24	cache-go/net.(*Server).accept	set sock opt Int after accept err	{"error": "protocol not available"}
+Fri May 13 18:52:13 2022	WARN	Logger	net/acceptor.go:24	cache-go/net.(*Server).accept	set sock opt Int after accept err	{"cfd": 3, "error": "protocol not available"}

@@ -1,0 +1,9 @@
+Tue May 10 23:06:02 2022	FATAL	Logger	net/poller.go:86	cache-go/net.(*poller).Poller	Poller err	{"error": "protocol not available"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:86
+cache-go/net.(*Server).Start
+	/home/lqf/golang/GoProject/cache-go/net/server.go:43
+cache-go/net.TestNewServer
+	/home/lqf/golang/GoProject/cache-go/net/server_test.go:7
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
