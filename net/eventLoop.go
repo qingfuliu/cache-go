@@ -6,6 +6,7 @@ import (
 	"go.uber.org/zap"
 	"golang.org/x/sys/unix"
 	"runtime"
+	"sync/atomic"
 )
 
 var (
@@ -68,7 +69,10 @@ func (el *eventLoop) asyncRegister(c *conn) error {
 	}, c)
 }
 
+var testNum int32
+
 func (el *eventLoop) read(c *conn) error {
+
 	n, err := unix.Read(c.FD(), el.buffer)
 	if err != nil {
 		if err == unix.EAGAIN {
@@ -152,16 +156,19 @@ func (el *eventLoop) startSubReactors(lockOsThread bool) (err error) {
 	if err = el.poller.Poller(func(fd int32, event uint32) (err error) {
 		if conn, ok := el.connections[int(fd)]; ok {
 
-			if event&writeEvent == 1 && !conn.outBoundBuffer.IsEmpty() {
+			if event&writeEvent != 0 && !conn.outBoundBuffer.IsEmpty() {
 				if err = el.write(conn); err != nil {
 					return err
 				}
 			}
 
-			if event&readEvent == 1 {
+			if event&readEvent != 0 {
+				atomic.AddInt32(&testNum, 1)
+				zap.L().Debug("testNums", zap.Int32("testNum", testNum))
 				if err = el.read(conn); err != nil {
 					return err
 				}
+				zap.L().Debug("after testNums", zap.Int32("testNum", testNum))
 			}
 		}
 		return nil

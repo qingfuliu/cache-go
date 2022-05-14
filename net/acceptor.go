@@ -11,6 +11,7 @@ func (s *Server) accept(fd int) (err error) {
 		cfd int
 		sa  unix.Sockaddr
 	)
+
 	cfd, sa, err = unix.Accept(fd)
 	if err != nil {
 		zap.L().Warn("accept err", zap.Int("fd", fd), zap.Error(err))
@@ -19,6 +20,7 @@ func (s *Server) accept(fd int) (err error) {
 		}
 		return
 	}
+
 	var flags int
 	if flags, err = unix.FcntlInt(uintptr(cfd), unix.F_GETFD, 0); err != nil {
 		zap.L().Error("f cntl Int err", zap.Error(err))
@@ -36,6 +38,5 @@ func (s *Server) accept(fd int) (err error) {
 	if err = el.asyncRegister(conn); err != nil {
 		return err
 	}
-	zap.L().Debug("accept New", zap.Int("fd", cfd))
 	return nil
 }

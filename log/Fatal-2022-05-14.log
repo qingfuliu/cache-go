@@ -7,3 +7,17 @@ runtime.doInit
 	/usr/local/go/src/runtime/proc.go:6199
 runtime.main
 	/usr/local/go/src/runtime/proc.go:233
+Sat May 14 18:15:47 2022	FATAL	Logger	net/poller.go:72	cache-go/net.(*poller).Poller	Poller err	{"error": "interrupted system call"}
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:72
+cache-go/net.(*eventLoop).startMainReactor
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:184
+cache-go/net.(*Server).Start.func1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:87
+Sat May 14 18:30:09 2022	FATAL	Logger	net/poller.go:129	cache-go/net.(*poller).Poller	tricker err
+cache-go/net.(*poller).Poller
+	/home/lqf/golang/GoProject/cache-go/net/poller.go:129
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:156
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:127

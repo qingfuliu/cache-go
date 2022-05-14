@@ -7,7 +7,6 @@ import (
 	"sync"
 	"sync/atomic"
 	"testing"
-	"time"
 )
 
 type echo struct {
@@ -18,21 +17,21 @@ func (e *echo) React(b []byte, c Conn) ([]byte, error) {
 	return b, nil
 }
 
-func TestNewServer(t *testing.T) {
-	s, err := NewServer("tcp", ":5201", nil, nil, &echo{}, SetReuseAddr(1))
-	if err != nil {
-		t.Fatal(err)
-	}
-	err = s.Start(false)
-	t.Log(err)
-}
+//func TestNewServer(t *testing.T) {
+//	s, err := NewServer("tcp", ":5201", nil, nil, &echo{}, SetReuseAddr(1))
+//	if err != nil {
+//		t.Fatal(err)
+//	}
+//	err = s.Start(false, -1)
+//	t.Log(err)
+//}
 
 func TestNewServer2(t *testing.T) {
-	testString := "lqfhhhasdfffffhhrwtsgy4w756546rstghfgjhn43765sdfhdrjlmlaemkrgklaenrgw90458hg"
+	testString := "1asasdfasdfsdafsdadfsadfsadsdf"
 	var wg sync.WaitGroup
 
 	var j int32
-	for i := 0; i < 100; i++ {
+	for i := 0; i < 1500; i++ {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
@@ -40,7 +39,7 @@ func TestNewServer2(t *testing.T) {
 			conn := &testConn{
 				bytes: make([]byte, 0),
 			}
-			Conn, err := net.Dial("tcp4", "192.168.1.103:5201")
+			Conn, err := net.Dial("tcp4", "127.0.0.1:5201")
 			if err != nil {
 				fmt.Println(err)
 				return
@@ -57,7 +56,7 @@ func TestNewServer2(t *testing.T) {
 			bytes = nil
 			for {
 				//Conn.SetDeadline(0)
-				err = Conn.SetReadDeadline(time.Now().Add(time.Minute * 2))
+				//err = Conn.SetReadDeadline(0)
 				if err != nil {
 					fmt.Println(err)
 					break

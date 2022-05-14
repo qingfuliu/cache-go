@@ -53,10 +53,13 @@ func NewServer(proto, addr string, codeC CodeC, lb loadBalance, handler EventHan
 func (s *Server) init() {
 }
 
-func (s *Server) Start(lockOsThread bool) (err error) {
-	numsLoops := runtime.NumCPU()
+func (s *Server) Start(lockOsThread bool, numReactors int) (err error) {
+	if numReactors <= 0 {
+		numReactors = runtime.NumCPU()
+	}
+
 	var pl *poller
-	for i := 0; i < numsLoops; i++ {
+	for i := 0; i < numReactors; i++ {
 		if pl, err = NewPoller(); err != nil {
 			return err
 		}
@@ -104,19 +107,23 @@ func (s *Server) afterShutDown() (err error) {
 	_ = s.mainEventLoop.poller.AddUrgentTask(func(i interface{}) error {
 		return ErrorServerShutDown
 	}, nil)
+
 	s.wg.Wait()
 	return nil
 }
+
 func (s *Server) waitForShutDown() {
 	s.cond.L.Lock()
 	s.cond.Wait()
 	s.cond.L.Unlock()
 }
+
 func (s *Server) Stop() {
 	s.cond.L.Lock()
 	s.cond.Signal()
 	s.cond.L.Unlock()
 }
+
 func (s *Server) startSubReactors(lockOsThread bool) {
 	s.lb.iterator(func(loop *eventLoop) bool {
 		s.wg.Add(1)

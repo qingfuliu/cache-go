@@ -151,7 +151,7 @@ func (c *conn) writeV(p [][]byte) (n int, err error) {
 }
 
 func (c *conn) Close() error {
-	zap.L().Debug("conn close!", zap.Int("fd", c.fd))
+	//zap.L().Debug("conn close!", zap.Int("fd", c.fd))
 	c.closed = true
 	if c.cache != nil {
 		bytebufferpool.Put(c.cache)
@@ -161,6 +161,10 @@ func (c *conn) Close() error {
 	c.buffer = nil
 	c.inBoundBuffer.Release()
 	c.outBoundBuffer.Release()
+	err := c.e.poller.Delete(c.fd)
+	if err != nil {
+		zap.L().Fatal("close conn err", zap.Error(err))
+	}
 	//close(c.msgChan)
 	return unix.Close(c.fd)
 }

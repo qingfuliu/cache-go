@@ -67,7 +67,6 @@ func (p *poller) Poller(fn EpollEventFunc) (err error) {
 	for {
 		doTasks = false
 		n, err = unix.EpollWait(p.fd, p.eventBuf, -1)
-
 		if n < 0 || err != nil && err == unix.EINTR {
 			runtime.Gosched()
 			continue
@@ -88,8 +87,10 @@ func (p *poller) Poller(fn EpollEventFunc) (err error) {
 					zap.L().Error("Poller err when excaute EpollEventFunc", zap.Error(err))
 				}
 			} else {
+				if _, err := unix.Read(p.weakUpFd, p.weakUpBuf); err != nil {
+					zap.L().Fatal("err when do urgent extra task", zap.Error(err))
+				}
 				atomic.StoreInt32(&p.weakState, 0)
-				_, _ = unix.Read(p.weakUpFd, p.weakUpBuf)
 				doTasks = true
 			}
 		}
@@ -122,7 +123,9 @@ func (p *poller) Poller(fn EpollEventFunc) (err error) {
 			if (!p.urgentTasks.IsEmpty() || !p.tasks.IsEmpty()) && atomic.CompareAndSwapInt32(&p.weakState, 0, 1) {
 				_, err = unix.Write(p.weakUpFd, weakBytes)
 				switch err {
-				case nil, unix.EAGAIN, unix.EINTR:
+				case nil:
+				case unix.EAGAIN, unix.EINTR:
+					atomic.CompareAndSwapInt32(&p.weakState, 1, 0)
 				default:
 					zap.L().Fatal("weak up err after do extra tasks!", zap.Error(err))
 				}
@@ -134,7 +137,6 @@ func (p *poller) Poller(fn EpollEventFunc) (err error) {
 		} else if n <= len(p.eventBuf)>>1 {
 			p.eventBuf = make([]unix.EpollEvent, len(p.eventBuf)>>1)
 		}
-
 	}
 }
 
@@ -144,6 +146,7 @@ func (p *poller) AddTask(fn func(interface{}) error, arg interface{}) error {
 }
 
 func (p *poller) AddUrgentTask(fn func(interface{}) error, arg interface{}) error {
+
 	p.urgentTasks.Push(fn, arg)
 	return p.Ticker()
 }
@@ -153,9 +156,13 @@ var weakBytes = (*((*[8]byte)(unsafe.Pointer(&weakVar))))[:]
 
 func (p *poller) Ticker() (err error) {
 	if atomic.CompareAndSwapInt32(&p.weakState, 0, 1) {
+	retry:
 		_, err = unix.Write(p.weakUpFd, weakBytes)
 		if err == unix.EAGAIN {
-			err = nil
+			goto retry
+		}
+		if err != nil {
+			zap.L().Fatal("ticker fatal", zap.Error(err))
 		}
 	}
 	return
