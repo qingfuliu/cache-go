@@ -1,0 +1,9 @@
+Sat May 14 10:45:55 2022	FATAL	Logger	net/socket.go:119	cache-go/net.init.0	atio fatal	{"error": "strconv.Atoi: parsing \"2048\\n\": invalid syntax"}
+cache-go/net.init.0
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:119
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6222
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6199
+runtime.main
+	/usr/local/go/src/runtime/proc.go:233

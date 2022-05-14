@@ -1,9 +1,13 @@
 package net
 
 import (
+	"bufio"
 	"go.uber.org/zap"
 	"golang.org/x/sys/unix"
 	"net"
+	"os"
+	"strconv"
+	"strings"
 )
 
 type SocketOpt func(fd int) error
@@ -11,10 +15,6 @@ type SocketOpt func(fd int) error
 func (s SocketOpt) Apply(fd int) error {
 	return s(fd)
 }
-
-//func SetReusePort(val int) SocketOpt {
-//
-//}
 
 func SetReuseAddr(val int) SocketOpt {
 	return func(fd int) error {
@@ -104,8 +104,26 @@ func handleTcpVersion(proto string, remoteAddr *net.TCPAddr) (version string, er
 	return "", ErrorUnsupportedTCPProtocol
 }
 
-var MaxSocketListenNums = 1000
+var MaxSocketListenNums = 1024
 
+func init() {
+	file, err := os.Open("/proc/sys/net/core/somaxconn")
+	if err != nil {
+		zap.L().Fatal("open somaxConn file err", zap.Error(err))
+	}
+	reader := bufio.NewReader(file)
+	val, err := reader.ReadString('\n')
+	if err != nil {
+		zap.L().Fatal("read val err", zap.Error(err))
+	}
+	val = strings.Trim(val, "\n")
+	if maxSocketListtenNums, err := strconv.Atoi(val); err != nil {
+		zap.L().Fatal("atio fatal", zap.Error(err))
+	} else {
+		MaxSocketListenNums = maxSocketListtenNums
+	}
+	zap.L().Info("max socket listen Num is ", zap.Int("num", MaxSocketListenNums))
+}
 func TcpSocket(proto, addr string, immediate bool, opts ...SocketOpt) (fd int, sa unix.Sockaddr, remoteAddr net.Addr, err error) {
 	var family int
 	if family, remoteAddr, sa, err = GetNetAddrAndSaAddr(proto, addr); err != nil {
