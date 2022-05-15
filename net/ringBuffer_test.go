@@ -1,7 +1,10 @@
 package net
 
 import (
+	"bytes"
 	"fmt"
+	"io/ioutil"
+	"os"
 	"testing"
 )
 
@@ -66,4 +69,32 @@ func TestRingBuffer(t *testing.T) {
 	if !ringBuffer.IsEmpty() {
 		t.Fatal("ringBuffer should be empty")
 	}
+}
+
+func TestRingBufferBigBytes(t *testing.T) {
+	file, err := os.Open("/home/lqf/MPackage/protoc-3.20.1-linux-x86_64.zip")
+	if err != nil {
+		t.Fatal(err)
+	}
+	testRingBuffer := NewDefaultRingBuffer()
+	testString, err := ioutil.ReadAll(file)
+	fmt.Println(len(testString))
+	var sum int
+	for {
+
+		if sum+MaximumQuantityPreTime < len(testString) {
+			testRingBuffer.Write(testString[sum : sum+MaximumQuantityPreTime])
+			fmt.Println(testRingBuffer.Len())
+		} else {
+			testRingBuffer.Write(testString[sum:])
+			fmt.Println(testRingBuffer.Len())
+			break
+		}
+		sum += MaximumQuantityPreTime
+	}
+	data := testRingBuffer.PeekAllWithBytes([]byte{})
+	if !bytes.Equal(data.Bytes(), testString) {
+		t.Fatal("err!")
+	}
+
 }

@@ -1,0 +1,50 @@
+Sat May 14 20:56:41 2022	ERROR	Logger	net/eventLoop.go:176	cache-go/net.(*eventLoop).startSubReactors	startSubReactors error:	{"error": "server shut down"}
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:176
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:131
+Sat May 14 20:56:41 2022	ERROR	Logger	net/eventLoop.go:176	cache-go/net.(*eventLoop).startSubReactors	startSubReactors error:	{"error": "server shut down"}
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:176
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:131
+Sat May 14 20:56:41 2022	ERROR	Logger	net/eventLoop.go:176	cache-go/net.(*eventLoop).startSubReactors	startSubReactors error:	{"error": "server shut down"}
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:176
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:131
+Sat May 14 20:56:41 2022	ERROR	Logger	net/eventLoop.go:176	cache-go/net.(*eventLoop).startSubReactors	startSubReactors error:	{"error": "server shut down"}
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:176
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:131
+Sat May 14 20:56:41 2022	ERROR	Logger	net/eventLoop.go:176	cache-go/net.(*eventLoop).startSubReactors	startSubReactors error:	{"error": "server shut down"}
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:176
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:131
+Sat May 14 20:56:41 2022	ERROR	Logger	net/eventLoop.go:176	cache-go/net.(*eventLoop).startSubReactors	startSubReactors error:	{"error": "server shut down"}
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:176
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:131
+Sat May 14 20:56:41 2022	ERROR	Logger	net/eventLoop.go:176	cache-go/net.(*eventLoop).startSubReactors	startSubReactors error:	{"error": "server shut down"}
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:176
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:131
+Sat May 14 20:56:41 2022	ERROR	Logger	net/eventLoop.go:176	cache-go/net.(*eventLoop).startSubReactors	startSubReactors error:	{"error": "server shut down"}
+cache-go/net.(*eventLoop).startSubReactors
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:176
+cache-go/net.(*Server).startSubReactors.func1.1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:131
+Sat May 14 20:56:41 2022	ERROR	Logger	net/eventLoop.go:187	cache-go/net.(*eventLoop).startMainReactor	startMainReactor err:	{"error": "server shut down"}
+cache-go/net.(*eventLoop).startMainReactor
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:187
+cache-go/net.(*Server).Start.func1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:87
+Sat May 14 21:00:45 2022	ERROR	Logger	net/eventLoop.go:189	cache-go/net.(*eventLoop).startMainReactor	startMainReactor err:	{"error": "server shut down"}
+cache-go/net.(*eventLoop).startMainReactor
+	/home/lqf/golang/GoProject/cache-go/net/eventLoop.go:189
+cache-go/net.(*Server).Start.func1
+	/home/lqf/golang/GoProject/cache-go/net/server.go:87

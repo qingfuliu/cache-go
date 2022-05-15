@@ -5,7 +5,6 @@ import (
 	"context"
 	"github.com/golang/protobuf/proto"
 	"github.com/valyala/bytebufferpool"
-	"go.uber.org/zap"
 	"golang.org/x/sys/unix"
 	"net"
 	"time"
@@ -73,7 +72,6 @@ func (c *conn) Closed() bool {
 }
 
 func (c *conn) Get(ctx context.Context, in proto.Message, out proto.Message) error {
-
 	return nil
 }
 
@@ -82,10 +80,8 @@ func (c *conn) Chan() <-chan proto.Message {
 }
 
 func (c *conn) write(p []byte) (n int, err error) {
-	var bytes []byte
-	if bytes, err = c.codeC.Encode(p); err != nil {
-		return
-	}
+	bytes, _ := c.codeC.Encode(p)
+	defer slicePool.Put(bytes)
 
 	if !c.outBoundBuffer.IsEmpty() {
 		return c.outBoundBuffer.Write(bytes)
@@ -94,35 +90,31 @@ func (c *conn) write(p []byte) (n int, err error) {
 	defer func() {
 		if !c.outBoundBuffer.IsEmpty() {
 			c.writeState = 1
-			c.e.poller.ModifyReadWrite(c.fd)
+			_ = c.e.poller.ModifyReadWrite(c.fd)
 		}
 	}()
-
 	n, err = unix.Write(c.fd, bytes)
 
-	if err != nil && err == unix.EAGAIN {
+	switch err {
+	case nil:
+	case unix.EAGAIN:
 		return c.outBoundBuffer.Write(p)
-	} else if err != nil {
+	default:
 		return
 	}
 
 	if n < len(bytes) {
 		_, _ = c.outBoundBuffer.Write(bytes[n:])
 	}
-
-	slicePool.Put(bytes)
-	return
+	return len(bytes), nil
 }
 
 func (c *conn) writeV(p [][]byte) (n int, err error) {
 
 	for i := range p {
-		if packet, err := c.codeC.Encode(p[i]); err != nil {
-			return 0, err
-		} else {
-			p[i] = packet
-		}
+		p[i], _ = c.codeC.Encode(p[i])
 	}
+	defer slicePool.Put(p...)
 
 	if !c.outBoundBuffer.IsEmpty() {
 		return c.outBoundBuffer.WriteV(p)
@@ -133,38 +125,36 @@ func (c *conn) writeV(p [][]byte) (n int, err error) {
 		sum, err = unix.Write(c.fd, p[i])
 		if err != nil && err != unix.EAGAIN {
 			return
-		} else if err != nil || sum < len(p[i]) {
+		}
+		n += sum
+		if sum != len(p[i]) {
 			break
 		}
-		slicePool.Put(p[i])
+	}
+
+	if i < len(p) {
+		if sum < len(p[i]) {
+			_, _ = c.outBoundBuffer.Write(p[i][sum:])
+			n += len(p[i]) - sum
+		}
+	}
+	if i < len(p)-1 {
+		sum, _ = c.outBoundBuffer.WriteV(p[i+1:])
 		n += sum
 	}
 
-	if sum < len(p[i]) {
-		_, _ = c.outBoundBuffer.Write(p[i][sum:])
-		n += len(p[i]) - sum
-	}
-	sum, _ = c.outBoundBuffer.WriteV(p[i+1:])
-	n += sum
-	slicePool.Put(p[i:]...)
 	return
 }
 
 func (c *conn) Close() error {
-	//zap.L().Debug("conn close!", zap.Int("fd", c.fd))
 	c.closed = true
 	if c.cache != nil {
 		bytebufferpool.Put(c.cache)
 		c.cache = nil
 	}
-	slicePool.Put(c.buffer)
 	c.buffer = nil
 	c.inBoundBuffer.Release()
 	c.outBoundBuffer.Release()
-	err := c.e.poller.Delete(c.fd)
-	if err != nil {
-		zap.L().Fatal("close conn err", zap.Error(err))
-	}
 	//close(c.msgChan)
 	return unix.Close(c.fd)
 }
@@ -173,7 +163,7 @@ func (c *conn) PeekAll() []byte {
 	if c.inBoundBuffer.IsEmpty() {
 		return c.buffer
 	}
-	c.cache = c.inBoundBuffer.ReadWithBytes(c.buffer)
+	c.cache = c.inBoundBuffer.PeekAllWithBytes(c.buffer)
 	return c.cache.B
 }
 
@@ -183,7 +173,7 @@ func (c *conn) ShiftN(n int) (p int) {
 		c.ResetBuf()
 		return
 	}
-	p = c.outBoundBuffer.ShiftN(n)
+	p = c.inBoundBuffer.ShiftN(n)
 	if p == n {
 		return
 	}
@@ -211,8 +201,12 @@ func (c *conn) OutLen() int {
 }
 
 func (c *conn) read() ([]byte, error) {
-
 	bytes, err := c.codeC.Decode(c)
+
+	if c.cache != nil {
+		bytebufferpool.Put(c.cache)
+		c.cache = nil
+	}
 
 	return bytes, err
 }

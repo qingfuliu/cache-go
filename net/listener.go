@@ -43,7 +43,13 @@ func (ls *listener) open(poller *poller) (err error) {
 
 func (ls *listener) close() (err error) {
 	ls.closed = true
+	_ = ls.poller.Delete(ls.fd)
+	_ = ls.poller.AddUrgentTask(func(i interface{}) error {
+		return ErrorServerShutDown
+	}, nil)
+
 	err = unix.Close(ls.fd)
+
 	return
 }
 

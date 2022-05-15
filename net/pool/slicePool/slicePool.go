@@ -33,6 +33,7 @@ func (p *Pool) Get(size int) (buf []byte) {
 		return make([]byte, size)
 	}
 	idx := index(size)
+
 	ptr, _ := p.pools[idx].Get().(unsafe.Pointer)
 
 	if ptr == nil {

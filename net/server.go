@@ -50,9 +50,6 @@ func NewServer(proto, addr string, codeC CodeC, lb loadBalance, handler EventHan
 	return
 }
 
-func (s *Server) init() {
-}
-
 func (s *Server) Start(lockOsThread bool, numReactors int) (err error) {
 	if numReactors <= 0 {
 		numReactors = runtime.NumCPU()
@@ -103,10 +100,6 @@ func (s *Server) afterShutDown() (err error) {
 	if err = s.listener.close(); err != nil {
 		zap.L().Error("close listener err", zap.Error(err))
 	}
-
-	_ = s.mainEventLoop.poller.AddUrgentTask(func(i interface{}) error {
-		return ErrorServerShutDown
-	}, nil)
 
 	s.wg.Wait()
 	return nil

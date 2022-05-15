@@ -7,7 +7,8 @@ import (
 )
 
 var (
-	DefaultRingBufferSize = 1024
+	DefaultRingBufferSize  = 1024
+	DefaultExtendThreshold = 1048576
 )
 
 type ringBuffer struct {
@@ -134,13 +135,11 @@ func (r *ringBuffer) WriteV(p [][]byte) (n int, err error) {
 	}
 
 	r.extend(sum - r.Free())
-
 	for i := 0; i < len(p); i++ {
-		if sum, err = r.Write(p[i]); err != nil {
-			return
-		}
+		sum, _ = r.Write(p[i])
 		n += sum
 	}
+
 	return
 }
 
@@ -210,16 +209,28 @@ func (r *ringBuffer) Reset() {
 
 func (r *ringBuffer) ReadWithBytes(p []byte) (bytes *bytebufferpool.ByteBuffer) {
 	defer r.Reset()
-	n := len(p)
-	n += r.Len()
 	bytes = bufferPool.GetBuffer()
 	head, tail := r.PeekAll()
 
 	_, _ = bytes.Write(head)
-	if tail != nil {
-		_, _ = bytes.Write(head)
+	if len(tail) != 0 {
+		_, _ = bytes.Write(tail)
 	}
 	_, _ = bytes.Write(p)
+	return bytes
+}
+
+func (r *ringBuffer) PeekAllWithBytes(p []byte) (bytes *bytebufferpool.ByteBuffer) {
+	bytes = bufferPool.GetBuffer()
+	head, tail := r.PeekAll()
+
+	_, _ = bytes.Write(head)
+	if len(tail) != 0 {
+		_, _ = bytes.Write(tail)
+	}
+	if len(p) != 0 {
+		_, _ = bytes.Write(p)
+	}
 	return bytes
 }
 
@@ -227,7 +238,19 @@ func (r *ringBuffer) extend(size int) {
 	if size <= 0 {
 		return
 	}
-	size = FloorPower2(r.Size() + size<<2)
+
+	size = r.Size() + size
+
+	if size > DefaultExtendThreshold {
+		newCap := r.Size()
+		for newCap < size {
+			newCap += newCap / 4
+		}
+		size = newCap
+	} else if size < r.Size()<<1 {
+		size = r.Size() << 1
+	}
+
 	newBuf := slicePool.Get(size)
 	if !r.IsEmpty() {
 		if r.read >= r.write {

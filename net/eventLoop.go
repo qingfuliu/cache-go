@@ -1,7 +1,6 @@
 package net
 
 import (
-	"cache-go/net/pool/bufferPool"
 	"cache-go/net/pool/slicePool"
 	"go.uber.org/zap"
 	"golang.org/x/sys/unix"
@@ -10,7 +9,7 @@ import (
 )
 
 var (
-	MaximumQuantityPreTime = 2048
+	MaximumQuantityPreTime = 8192
 )
 
 type eventLoop struct {
@@ -26,7 +25,7 @@ func newEventLoop(s *Server, p *poller) (el *eventLoop) {
 		s:           s,
 		poller:      p,
 		connections: make(map[int]*conn),
-		buffer:      slicePool.Get(MaxTasksPreLoop),
+		buffer:      make([]byte, MaximumQuantityPreTime), //slicePool.Get(MaxTasksPreLoop),
 		eventHandle: s.eventHandle,
 	}
 	p.el = el
@@ -34,24 +33,28 @@ func newEventLoop(s *Server, p *poller) (el *eventLoop) {
 }
 
 func (el *eventLoop) closeAllConn() {
-	for key, val := range el.connections {
+	for _, val := range el.connections {
 		_ = val.Close()
-		delete(el.connections, key)
+		_ = el.poller.Delete(val.fd)
 	}
+	el.connections = nil
 }
 
-func (el *eventLoop) closeConn(c *conn) error {
-	if c, ok := el.connections[c.fd]; ok {
+func (el *eventLoop) closeConn(fd int) error {
+	if c, ok := el.connections[fd]; ok {
 		delete(el.connections, c.fd)
+		_ = el.poller.Delete(c.fd)
 		return c.Close()
 	}
 	return nil
 }
 
-func (el *eventLoop) Close() {
+func (el *eventLoop) Close() (err error) {
 	slicePool.Put(el.buffer)
 	el.buffer = nil
 	el.closeAllConn()
+	err = el.poller.Close()
+	return
 }
 
 func (el *eventLoop) register(c *conn) error {
@@ -73,19 +76,26 @@ var testNum int32
 
 func (el *eventLoop) read(c *conn) error {
 
-	n, err := unix.Read(c.FD(), el.buffer)
+	n, err := unix.Read(c.fd, el.buffer)
+
 	if err != nil {
-		if err == unix.EAGAIN {
-			return nil
+		switch err {
+		case unix.EAGAIN, unix.EINTR:
+			err = nil
+			fallthrough
+		default:
+			return err
 		}
-		return err
 	} else if n == 0 {
-		return el.closeConn(c)
+		_ = el.closeConn(c.fd)
+		return nil
 	}
+
 	c.buffer = el.buffer[:n]
 	var buf, bytes []byte
 	for bytes, err = c.read(); err == nil; bytes, err = c.read() {
 		buf, err = el.eventHandle.React(bytes, c)
+		bytes = nil
 		if err != nil {
 			return nil
 		}
@@ -96,52 +106,41 @@ func (el *eventLoop) read(c *conn) error {
 			}
 		}
 		slicePool.Put(bytes)
-		//bufferPool.PutBuffer(&bytebufferpool.ByteBuffer{B: bytes})
-		if c.cache != nil {
-			bufferPool.PutBuffer(c.cache)
-		}
 	}
-	if err != nil {
-		if err == ErrorBytesLengthTooShort {
-			err = nil
-		} else {
-			return err
-		}
-	}
-	//slicePool.Put(bytes)
 
-	c.cache = nil
+	if err == ErrorBytesLengthTooShort {
+		err = nil
+	}
+
 	if len(c.buffer) != 0 {
 		_, _ = c.inBoundBuffer.Write(c.buffer)
 	}
+
 	return nil
 }
 
 func (el *eventLoop) write(c *conn) (err error) {
-	head, tail := c.outBoundBuffer.PeekN(MaximumQuantityPreTime)
+	data := make([][]byte, 2)
+	data[0], data[1] = c.outBoundBuffer.PeekN(MaximumQuantityPreTime)
+
 	var n int
-	n, err = unix.Write(c.FD(), head)
-
-	if err != nil {
-		if err == unix.EAGAIN {
+	for i := range data {
+		n, err = unix.Write(c.fd, data[i])
+		switch err {
+		case nil:
+		case unix.EAGAIN:
 			err = nil
-		}
-		return
-	}
-
-	if n == len(head) {
-		var n2 int
-		n2, err = unix.Write(c.FD(), tail)
-		if err != nil {
-			if err == unix.EAGAIN {
-				err = nil
-			}
+			fallthrough
+		default:
 			return
 		}
-		n += n2
+		c.outBoundBuffer.ShiftN(n)
+		if n < len(data[i]) {
+			break
+		}
 	}
-	c.outBoundBuffer.ShiftN(n)
-	if c.OutLen() == 0 && c.writeState != 0 {
+
+	if c.outBoundBuffer.IsEmpty() && c.writeState != 0 {
 		err = el.poller.ModifyRead(c.FD())
 		c.writeState = 0
 	}
@@ -164,17 +163,16 @@ func (el *eventLoop) startSubReactors(lockOsThread bool) (err error) {
 
 			if event&readEvent != 0 {
 				atomic.AddInt32(&testNum, 1)
-				zap.L().Debug("testNums", zap.Int32("testNum", testNum))
 				if err = el.read(conn); err != nil {
 					return err
 				}
-				zap.L().Debug("after testNums", zap.Int32("testNum", testNum))
 			}
 		}
 		return nil
 	}); err != nil {
-		zap.L().Error("startSubReactors error:", zap.Error(err))
+		zap.L().Fatal("subReactors error:", zap.Error(err))
 	}
+	zap.L().Info("subReactor shut down")
 	return
 }
 
@@ -184,7 +182,8 @@ func (el *eventLoop) startMainReactor() (err error) {
 	if err = el.poller.Poller(func(fd int32, event uint32) (err error) {
 		return el.s.accept(int(fd))
 	}); err != nil {
-		zap.L().Error("startMainReactor err:", zap.Error(err))
+		zap.L().Fatal("mainReactor err:", zap.Error(err))
 	}
+	zap.L().Info("main Reactor shut down")
 	return
 }

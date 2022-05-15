@@ -10,8 +10,8 @@ import (
 )
 
 var (
-	DefaultEpollSize = 1000
-	MaxTasksPreLoop  = 200
+	DefaultEpollSize = 4096
+	MaxTasksPreLoop  = 1024
 )
 
 type EpollEventFunc func(fd int32, event uint32) error
@@ -51,7 +51,6 @@ func NewPoller() (p *poller, err error) {
 }
 
 func (p *poller) Close() (err error) {
-	p.el.Close()
 	if err = unix.Close(p.fd); err != nil {
 		return
 	}
@@ -80,11 +79,9 @@ func (p *poller) Poller(fn EpollEventFunc) (err error) {
 				err = fn(p.eventBuf[i].Fd, p.eventBuf[i].Events)
 				switch err {
 				case nil:
-				case ErrorServerShutDown:
-					_ = p.Close()
-					return
 				default:
-					zap.L().Error("Poller err when excaute EpollEventFunc", zap.Error(err))
+					_ = p.el.closeConn(int(p.eventBuf[i].Fd))
+					zap.L().Error("poller err when excaute epollEventFunc", zap.Error(err))
 				}
 			} else {
 				if _, err := unix.Read(p.weakUpFd, p.weakUpBuf); err != nil {
@@ -96,30 +93,32 @@ func (p *poller) Poller(fn EpollEventFunc) (err error) {
 		}
 
 		//----------------extra tasks------------------------------//
+
 		if doTasks {
+			//----------------urgent tasks------------------------------//
 			task := p.urgentTasks.Pop()
 			for ; task != nil; task = p.urgentTasks.Pop() {
 				err = task.Run()
 				switch err {
 				case nil:
 				case ErrorServerShutDown:
-					_ = p.Close()
-					return
+					return p.el.Close()
 				default:
 					zap.L().Error("err when do urgent extra task", zap.Error(err))
 				}
 			}
-			for i := 0; i < MaxTasksPreLoop; i++ {
-				if task = p.tasks.Pop(); task == nil {
-					break
-				}
+			//----------------common tasks------------------------------//
+			task = p.tasks.Pop()
+			for i := 0; task != nil && i < MaxTasksPreLoop; i++ {
 				err = task.Run()
 				switch err {
 				case nil:
 				default:
 					zap.L().Error("err when do common  extra task", zap.Error(err))
 				}
+				task = p.tasks.Pop()
 			}
+
 			if (!p.urgentTasks.IsEmpty() || !p.tasks.IsEmpty()) && atomic.CompareAndSwapInt32(&p.weakState, 0, 1) {
 				_, err = unix.Write(p.weakUpFd, weakBytes)
 				switch err {
@@ -137,6 +136,7 @@ func (p *poller) Poller(fn EpollEventFunc) (err error) {
 		} else if n <= len(p.eventBuf)>>1 {
 			p.eventBuf = make([]unix.EpollEvent, len(p.eventBuf)>>1)
 		}
+
 	}
 }
 
@@ -146,7 +146,6 @@ func (p *poller) AddTask(fn func(interface{}) error, arg interface{}) error {
 }
 
 func (p *poller) AddUrgentTask(fn func(interface{}) error, arg interface{}) error {
-
 	p.urgentTasks.Push(fn, arg)
 	return p.Ticker()
 }

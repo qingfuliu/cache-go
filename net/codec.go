@@ -93,19 +93,8 @@ func (LBC *LengthFieldBasedFrameCodec) Encode(bytes []byte) ([]byte, error) {
 	default:
 		return nil, ErrorInvalidLengthFieldLength
 	}
-
-	//val := bufferPool.GetBuffer()
-	//if _, err := val.Write(data); err != nil {
-	//	bufferPool.PutBuffer(val)
-	//	return nil, err
-	//}
-	//if _, err := val.Write(bytes); err != nil {
-	//	bufferPool.PutBuffer(val)
-	//	return nil, err
-	//}
-	//return val.B, nil
-
 	val := slicePool.Get(len(bytes) + len(data))
+
 	copy(val, data)
 	copy(val[len(data):], bytes)
 	return val, nil
@@ -138,16 +127,6 @@ func (LBC *LengthFieldBasedFrameCodec) Decode(c Conn) ([]byte, error) {
 	if int64(len(bytes)) < length {
 		return nil, ErrorBytesLengthTooShort
 	}
-
-	//val := bufferPool.GetBuffer()
-	//data := bytes[:length]
-	//c.ShiftN(len(data) + int(LBC.deCoderConfig.InitialBytesToStrip))
-	//if _, err := val.Write(data); err != nil {
-	//	bufferPool.PutBuffer(val)
-	//	return nil, err
-	//}
-	//return val.B, nil
-
 	val := slicePool.Get(int(length))
 	copy(val, bytes[:length])
 	c.ShiftN(int(length) + int(LBC.deCoderConfig.InitialBytesToStrip))
