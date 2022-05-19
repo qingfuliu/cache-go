@@ -22,6 +22,8 @@ type tcpPeerPicker struct {
 	wg              *sync.WaitGroup
 	el              *eventLoop
 	poller          *poller
+
+	failedRetry int
 }
 
 type tcpPeerPickerEventHandler struct {
@@ -53,8 +55,9 @@ func newTcpPeerPicker(cacheServer *TcpCacheServer) *tcpPeerPicker {
 		peerGetterPools: make(map[string]*tcpPeerGetterPool),
 		remoteAddr:      make([]string, 0),
 		wg:              &sync.WaitGroup{},
+		failedRetry:     10,
 	}
-	tcpPicker.remoteAddr = append(tcpPicker.remoteAddr, cacheServer.localAddr.String())
+	//tcpPicker.remoteAddr = append(tcpPicker.remoteAddr, cacheServer.localAddr.String())
 	cache_go.RegisterGetPeerPickerFunc(tcpPicker)
 	return tcpPicker
 }
@@ -108,8 +111,14 @@ func (tP *tcpPeerPicker) GetPeer(key string, ctx context.Context) (pG cache_go.P
 		return nil, false
 	}
 	var err error
+	resume := tP.failedRetry
+retry:
 	if pG, err = tP.peerGetterPools[addr].Conn(ctx); err != nil {
-		return nil, false
+		resume--
+		if resume > 0 {
+			goto retry
+		}
+		return nil, true
 	}
 	return
 }

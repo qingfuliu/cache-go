@@ -11,3 +11,306 @@ cache-go/net.TestNewTcpPeerGetterPool
 	/home/lqf/golang/GoProject/cache-go/net/tcpPeerGetter_test.go:13
 testing.tRunner
 	/usr/local/go/src/testing/testing.go:1439
+Thu May 19 17:28:14 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*tcpPeerConnector).Connect
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerConnector.go:23
+cache-go/net.(*tcpPeerGetterPool).newConnection
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:320
+cache-go/net.(*tcpPeerGetterPool).Conn
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:254
+cache-go/net.(*tcpPeerPicker).GetPeer
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerPicker.go:111
+cache-go.(*CacheHub).load.func1
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:111
+cache-go.(*concurrencyBarrier).Execute
+	/home/lqf/golang/GoProject/cache-go/ConcurrencyBarrier.go:39
+cache-go.(*CacheHub).load
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:98
+cache-go.(*CacheHub).Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:193
+cache-go.Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:16
+cache-go/net.TestNewTcpCacheServer
+	/home/lqf/golang/GoProject/cache-go/net/cacheServer_test.go:38
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Thu May 19 17:43:34 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*tcpPeerConnector).Connect
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerConnector.go:24
+cache-go/net.(*tcpPeerGetterPool).newConnection
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:321
+cache-go/net.(*tcpPeerGetterPool).Conn
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:255
+cache-go/net.(*tcpPeerPicker).GetPeer
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerPicker.go:111
+cache-go.(*CacheHub).load.func1
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:111
+cache-go.(*concurrencyBarrier).Execute
+	/home/lqf/golang/GoProject/cache-go/ConcurrencyBarrier.go:39
+cache-go.(*CacheHub).load
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:98
+cache-go.(*CacheHub).Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:193
+cache-go.Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:16
+cache-go/net.TestNewTcpCacheServer
+	/home/lqf/golang/GoProject/cache-go/net/cacheServer_test.go:38
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
+Thu May 19 17:55:36 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*tcpPeerConnector).Connect
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerConnector.go:24
+cache-go/net.(*tcpPeerGetterPool).newConnection
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:321
+cache-go/net.(*tcpPeerGetterPool).Conn
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:254
+cache-go/net.(*tcpPeerPicker).GetPeer
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerPicker.go:111
+cache-go.(*CacheHub).load.func1
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:111
+cache-go.(*concurrencyBarrier).Execute
+	/home/lqf/golang/GoProject/cache-go/ConcurrencyBarrier.go:39
+cache-go.(*CacheHub).load
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:98
+cache-go.(*CacheHub).Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:193
+cache-go.Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:16
+cache-go/net.TestNewTcpCacheServer.func2
+	/home/lqf/golang/GoProject/cache-go/net/cacheServer_test.go:43
+Thu May 19 18:06:25 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*tcpPeerConnector).Connect
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerConnector.go:24
+cache-go/net.(*tcpPeerGetterPool).newConnection
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:321
+cache-go/net.(*tcpPeerGetterPool).Conn
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:254
+cache-go/net.(*tcpPeerPicker).GetPeer
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerPicker.go:116
+cache-go.(*CacheHub).load.func1
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:111
+cache-go.(*concurrencyBarrier).Execute
+	/home/lqf/golang/GoProject/cache-go/ConcurrencyBarrier.go:39
+cache-go.(*CacheHub).load
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:99
+cache-go.(*CacheHub).Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:198
+cache-go.Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:17
+cache-go/net.TestNewTcpCacheServer.func2
+	/home/lqf/golang/GoProject/cache-go/net/cacheServer_test.go:43
+Thu May 19 18:06:27 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*tcpPeerConnector).Connect
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerConnector.go:24
+cache-go/net.(*tcpPeerGetterPool).newConnection
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:321
+cache-go/net.(*tcpPeerGetterPool).Conn
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:254
+cache-go/net.(*tcpPeerPicker).GetPeer
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerPicker.go:116
+cache-go.(*CacheHub).load.func1
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:111
+cache-go.(*concurrencyBarrier).Execute
+	/home/lqf/golang/GoProject/cache-go/ConcurrencyBarrier.go:39
+cache-go.(*CacheHub).load
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:99
+cache-go.(*CacheHub).Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:198
+cache-go.Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:17
+cache-go/net.TestNewTcpCacheServer.func2
+	/home/lqf/golang/GoProject/cache-go/net/cacheServer_test.go:43
+Thu May 19 18:06:29 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*tcpPeerConnector).Connect
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerConnector.go:24
+cache-go/net.(*tcpPeerGetterPool).newConnection
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:321
+cache-go/net.(*tcpPeerGetterPool).Conn
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:254
+cache-go/net.(*tcpPeerPicker).GetPeer
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerPicker.go:116
+cache-go.(*CacheHub).load.func1
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:111
+cache-go.(*concurrencyBarrier).Execute
+	/home/lqf/golang/GoProject/cache-go/ConcurrencyBarrier.go:39
+cache-go.(*CacheHub).load
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:99
+cache-go.(*CacheHub).Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:198
+cache-go.Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:17
+cache-go/net.TestNewTcpCacheServer.func2
+	/home/lqf/golang/GoProject/cache-go/net/cacheServer_test.go:43
+Thu May 19 18:06:31 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*tcpPeerConnector).Connect
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerConnector.go:24
+cache-go/net.(*tcpPeerGetterPool).newConnection
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:321
+cache-go/net.(*tcpPeerGetterPool).Conn
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:254
+cache-go/net.(*tcpPeerPicker).GetPeer
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerPicker.go:116
+cache-go.(*CacheHub).load.func1
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:111
+cache-go.(*concurrencyBarrier).Execute
+	/home/lqf/golang/GoProject/cache-go/ConcurrencyBarrier.go:39
+cache-go.(*CacheHub).load
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:99
+cache-go.(*CacheHub).Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:198
+cache-go.Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:17
+cache-go/net.TestNewTcpCacheServer.func2
+	/home/lqf/golang/GoProject/cache-go/net/cacheServer_test.go:43
+Thu May 19 18:06:33 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*tcpPeerConnector).Connect
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerConnector.go:24
+cache-go/net.(*tcpPeerGetterPool).newConnection
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:321
+cache-go/net.(*tcpPeerGetterPool).Conn
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:254
+cache-go/net.(*tcpPeerPicker).GetPeer
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerPicker.go:116
+cache-go.(*CacheHub).load.func1
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:111
+cache-go.(*concurrencyBarrier).Execute
+	/home/lqf/golang/GoProject/cache-go/ConcurrencyBarrier.go:39
+cache-go.(*CacheHub).load
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:99
+cache-go.(*CacheHub).Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:198
+cache-go.Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:17
+cache-go/net.TestNewTcpCacheServer.func2
+	/home/lqf/golang/GoProject/cache-go/net/cacheServer_test.go:43
+Thu May 19 18:06:35 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*tcpPeerConnector).Connect
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerConnector.go:24
+cache-go/net.(*tcpPeerGetterPool).newConnection
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:321
+cache-go/net.(*tcpPeerGetterPool).Conn
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:254
+cache-go/net.(*tcpPeerPicker).GetPeer
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerPicker.go:116
+cache-go.(*CacheHub).load.func1
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:111
+cache-go.(*concurrencyBarrier).Execute
+	/home/lqf/golang/GoProject/cache-go/ConcurrencyBarrier.go:39
+cache-go.(*CacheHub).load
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:99
+cache-go.(*CacheHub).Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:198
+cache-go.Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:17
+cache-go/net.TestNewTcpCacheServer.func2
+	/home/lqf/golang/GoProject/cache-go/net/cacheServer_test.go:43
+Thu May 19 18:06:37 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*tcpPeerConnector).Connect
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerConnector.go:24
+cache-go/net.(*tcpPeerGetterPool).newConnection
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:321
+cache-go/net.(*tcpPeerGetterPool).Conn
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:254
+cache-go/net.(*tcpPeerPicker).GetPeer
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerPicker.go:116
+cache-go.(*CacheHub).load.func1
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:111
+cache-go.(*concurrencyBarrier).Execute
+	/home/lqf/golang/GoProject/cache-go/ConcurrencyBarrier.go:39
+cache-go.(*CacheHub).load
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:99
+cache-go.(*CacheHub).Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:198
+cache-go.Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:17
+cache-go/net.TestNewTcpCacheServer.func2
+	/home/lqf/golang/GoProject/cache-go/net/cacheServer_test.go:43
+Thu May 19 18:06:39 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*tcpPeerConnector).Connect
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerConnector.go:24
+cache-go/net.(*tcpPeerGetterPool).newConnection
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:321
+cache-go/net.(*tcpPeerGetterPool).Conn
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:254
+cache-go/net.(*tcpPeerPicker).GetPeer
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerPicker.go:116
+cache-go.(*CacheHub).load.func1
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:111
+cache-go.(*concurrencyBarrier).Execute
+	/home/lqf/golang/GoProject/cache-go/ConcurrencyBarrier.go:39
+cache-go.(*CacheHub).load
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:99
+cache-go.(*CacheHub).Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:198
+cache-go.Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:17
+cache-go/net.TestNewTcpCacheServer.func2
+	/home/lqf/golang/GoProject/cache-go/net/cacheServer_test.go:43
+Thu May 19 18:06:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*tcpPeerConnector).Connect
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerConnector.go:24
+cache-go/net.(*tcpPeerGetterPool).newConnection
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:321
+cache-go/net.(*tcpPeerGetterPool).Conn
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:254
+cache-go/net.(*tcpPeerPicker).GetPeer
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerPicker.go:116
+cache-go.(*CacheHub).load.func1
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:111
+cache-go.(*concurrencyBarrier).Execute
+	/home/lqf/golang/GoProject/cache-go/ConcurrencyBarrier.go:39
+cache-go.(*CacheHub).load
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:99
+cache-go.(*CacheHub).Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:198
+cache-go.Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:17
+cache-go/net.TestNewTcpCacheServer.func2
+	/home/lqf/golang/GoProject/cache-go/net/cacheServer_test.go:43
+Thu May 19 18:06:43 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*tcpPeerConnector).Connect
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerConnector.go:24
+cache-go/net.(*tcpPeerGetterPool).newConnection
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:321
+cache-go/net.(*tcpPeerGetterPool).Conn
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:254
+cache-go/net.(*tcpPeerPicker).GetPeer
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerPicker.go:116
+cache-go.(*CacheHub).load.func1
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:111
+cache-go.(*concurrencyBarrier).Execute
+	/home/lqf/golang/GoProject/cache-go/ConcurrencyBarrier.go:39
+cache-go.(*CacheHub).load
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:99
+cache-go.(*CacheHub).Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:198
+cache-go.Get
+	/home/lqf/golang/GoProject/cache-go/cacheHub.go:17
+cache-go/net.TestNewTcpCacheServer.func2
+	/home/lqf/golang/GoProject/cache-go/net/cacheServer_test.go:43

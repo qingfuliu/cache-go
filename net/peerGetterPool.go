@@ -271,6 +271,7 @@ func (GP *tcpPeerGetterPool) putConnLocked(tcpGetter *tcpPeerGetter) bool {
 		GP.maxLifeTimeClosed++
 		return false
 	}
+
 	tcpGetter.inUse = false
 	if len(GP.requests) > 0 {
 		var key int64
@@ -411,8 +412,9 @@ func (GP *tcpPeerGetterPool) cleanerGoroutine() {
 
 }
 
-func (GP *tcpPeerGetterPool) putConn(tcpGetter *tcpPeerGetter) bool {
+func (GP *tcpPeerGetterPool) putConn(tcpGetter *tcpPeerGetter) (ok bool) {
 	GP.mu.Lock()
-	defer GP.mu.Lock()
-	return GP.putConnLocked(tcpGetter)
+	ok = GP.putConnLocked(tcpGetter)
+	GP.mu.Unlock()
+	return
 }

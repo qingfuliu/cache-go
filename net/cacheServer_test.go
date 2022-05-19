@@ -5,13 +5,15 @@ import (
 	"cache-go/byteString"
 	"context"
 	"fmt"
+	"net"
 	"strconv"
+	"sync"
 	"testing"
 	"time"
 )
 
 func TestNewTcpCacheServer(t *testing.T) {
-
+	count := 1000
 	var m = make(map[string]string)
 	for i := 0; i < 10; i++ {
 		str := "lqf" + strconv.Itoa(i)
@@ -30,14 +32,30 @@ func TestNewTcpCacheServer(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	//_ = p.AddRemoteAddr("tcp", "192.168.1.103:5200")
+	_ = p.AddRemoteAddr("tcp", "192.168.1.103:8081")
 	go p.Start(false, -1, SetMaxOpen(20), SetMaxLife(time.Second*10), SetMaxIdle(10))
-
-	var s string
-	err = cache_go.Get(context.Background(), "lqf", "lqf", byteString.NewStringSkin(&s))
-	fmt.Println(err, s)
+	time.Sleep(time.Second)
+	wg := &sync.WaitGroup{}
+	for i := 0; i < count; i++ {
+		if i%100 == 0 {
+			time.Sleep(time.Second)
+		}
+		wg.Add(1)
+		go func() {
+			var s string
+			err = cache_go.Get(context.Background(), "lqf", "lqf8", byteString.NewStringSkin(&s))
+			fmt.Println("err", err, "s", s)
+			wg.Done()
+		}()
+	}
+	wg.Wait()
 }
 
 func TestNewTcpCacheServer2(t *testing.T) {
-
+	dial, err := net.Dial("tcp", "192.168.1.103:8081")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	dial.Close()
 }

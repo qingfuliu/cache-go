@@ -107,9 +107,12 @@ func (c *CacheHub) load(ctx context.Context, key string) (val byteString.ByteStr
 		c.once.Do(func() {
 			c.picker = getPeerPicker()
 		})
-
 		peer, ok = c.picker.GetPeer(key, ctx)
 		if ok {
+			if peer == nil {
+				err = ErrorServerBusy
+				return
+			}
 			view_, err = c.getFromPeer(ctx, peer, key)
 		} else {
 			view_, err = c.getLocally(ctx, key)

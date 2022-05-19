@@ -79,7 +79,8 @@ func (tp *tcpPeerGetter) Get(ctx context.Context, in *msg.GetRequest, out *msg.G
 		_ = tp.Close()
 		return ctx.Err()
 	case message := <-tp.attachment.msgChan:
-		out = message.msg
+		out.Val = message.msg.Val
+		out.Error = message.msg.Error
 		tp.sendBack()
 		return message.err
 	}

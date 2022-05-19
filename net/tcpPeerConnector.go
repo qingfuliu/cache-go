@@ -3,6 +3,7 @@ package net
 import (
 	"context"
 	"net"
+	"sync"
 )
 
 type tcpPeerConnector struct {
@@ -35,14 +36,16 @@ func (tPC *tcpPeerConnector) Connect(ctx context.Context) (*tcpPeerGetter, error
 		_ = conn.Close()
 		return nil, err
 	}
-
+	attachment := &tcpGetterAttachment{
+		msgChan: make(chan *message, 1),
+		wait:    0,
+		mu:      &sync.Mutex{},
+	}
+	conn.SetContext(attachment)
 	return &tcpPeerGetter{
-		pool:     tPC.pool,
-		conn:     conn,
-		createAt: nowFunc(),
-		attachment: &tcpGetterAttachment{
-			msgChan: make(chan *message, 1),
-			wait:    0,
-		},
+		pool:       tPC.pool,
+		conn:       conn,
+		createAt:   nowFunc(),
+		attachment: attachment,
 	}, nil
 }
