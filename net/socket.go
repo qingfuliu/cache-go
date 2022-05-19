@@ -124,7 +124,7 @@ func init() {
 	}
 	zap.L().Info("max socket listen Num is ", zap.Int("num", MaxSocketListenNums))
 }
-func TcpSocket(proto, addr string, immediate bool, opts ...SocketOpt) (fd int, sa unix.Sockaddr, remoteAddr net.Addr, err error) {
+func TcpSocket(proto, addr string, immediate bool, passive bool, opts ...SocketOpt) (fd int, sa unix.Sockaddr, remoteAddr net.Addr, err error) {
 	var family int
 	if family, remoteAddr, sa, err = GetNetAddrAndSaAddr(proto, addr); err != nil {
 		return
@@ -141,10 +141,19 @@ func TcpSocket(proto, addr string, immediate bool, opts ...SocketOpt) (fd int, s
 		}
 	}
 
+	if !passive {
+		err = unix.Connect(fd, sa)
+		if err != nil {
+			zap.L().Error("connect fatal!", zap.Error(err))
+		}
+		return
+	}
+
 	if err = unix.Bind(fd, sa); err != nil {
 		zap.L().Error("tcp socket err when  binding ", zap.Error(err))
 		return
 	}
+
 	if immediate {
 		if err = unix.Listen(fd, MaxSocketListenNums); err != nil {
 			zap.L().Error("tcp socket err when  listening ", zap.Error(err))

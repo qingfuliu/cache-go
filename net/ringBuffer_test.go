@@ -11,7 +11,7 @@ import (
 func TestRingBuffer(t *testing.T) {
 	test := "1asdfasdfaer3245234562"
 	ringBuffer := NewRingBuffer(1024)
-	//fmt.Println(ringBuffer.Size())
+	//fmt.Println(ringBuffer.size())
 	for i := 0; i < 100000; i++ {
 		n, _ := ringBuffer.WriteString(test)
 		if n != len(test) {

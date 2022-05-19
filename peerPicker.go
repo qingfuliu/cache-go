@@ -1,26 +1,37 @@
 package cache_go
 
-func GetPeerPicker() peerPicker {
+import (
+	"context"
+	"sync"
+)
+
+func getPeerPicker() PeerPicker {
 	return DefaultGetPeerPickerFunc()
 }
 
-func RegisterGetPeerPickerFunc(fn func() peerPicker) {
-	DefaultGetPeerPickerFunc = fn
+var once sync.Once
+
+func RegisterGetPeerPickerFunc(p PeerPicker) {
+	once.Do(func() {
+		DefaultGetPeerPickerFunc = func() PeerPicker {
+			return p
+		}
+	})
 }
 
-var DefaultPeeker peerPicker = &defaultPeeker{}
+var DefaultPeeker PeerPicker = &defaultPeeker{}
 
-var DefaultGetPeerPickerFunc func() peerPicker = func() peerPicker {
+var DefaultGetPeerPickerFunc func() PeerPicker = func() PeerPicker {
 	return DefaultPeeker
 }
 
-type peerPicker interface {
-	GetPeer(key string) (PeerGetter, bool)
+type PeerPicker interface {
+	GetPeer(key string, ctx context.Context) (PeerGetter, bool)
 }
 
 type defaultPeeker struct {
 }
 
-func (p *defaultPeeker) GetPeer(key string) (PeerGetter, bool) {
+func (p *defaultPeeker) GetPeer(key string, ctx context.Context) (PeerGetter, bool) {
 	return nil, false
 }

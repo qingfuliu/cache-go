@@ -16,7 +16,7 @@ import (
 type testPeerPicker struct {
 }
 
-func (t *testPeerPicker) GetPeer(key string) (PeerGetter, bool) {
+func (t *testPeerPicker) GetPeer(key string, ctx context.Context) (PeerGetter, bool) {
 	return &testPeerGetter{}, true
 }
 
@@ -25,7 +25,7 @@ type testPeerGetter struct {
 
 var m = make(map[string]string)
 
-func (t *testPeerGetter) Get(ctx context.Context, in proto.Message, out proto.Message) error {
+func (t *testPeerGetter) Get(ctx context.Context, in *msg.GetRequest, out *msg.GetResponse) error {
 	request := msg.GetRequest{}
 	bytes, _ := proto.Marshal(in)
 	_ = proto.Unmarshal(bytes, &request)
@@ -43,9 +43,7 @@ func (t *testPeerGetter) Get(ctx context.Context, in proto.Message, out proto.Me
 
 func TestNewCacheHub(t *testing.T) {
 	ctx := context.Background()
-	RegisterGetPeerPickerFunc(func() peerPicker {
-		return &testPeerPicker{}
-	})
+	RegisterGetPeerPickerFunc(&testPeerPicker{})
 
 	for i := 0; i < 10; i++ {
 		str := "lqf" + strconv.Itoa(i)

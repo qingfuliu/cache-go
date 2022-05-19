@@ -14,8 +14,10 @@ type echo struct {
 }
 
 func (e *echo) React(b []byte, c net.Conn) ([]byte, error) {
-	return b, nil
+
+	return nil, c.Close()
 }
+
 func main() {
 	runtime.SetBlockProfileRate(1)
 	runtime.SetMutexProfileFraction(1)

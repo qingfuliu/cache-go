@@ -1,0 +1,18 @@
+Sun May 15 12:17:31 2022	FATAL	Logger	cache_go/socket.go:112	cache-go/cache_go.init.0	open somaxConn file err	{"error": "open /proc/sys/cache_go/core/somaxconn: no such file or directory"}
+cache-go/cache_go.init.0
+	/home/lqf/golang/GoProject/cache-go/cache_go/socket.go:112
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6222
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6199
+runtime.main
+	/usr/local/go/src/runtime/proc.go:233
+Sun May 15 12:23:58 2022	FATAL	Logger	cache_go/socket.go:112	cache-go/cache_go.init.0	open somaxConn file err	{"error": "open /proc/sys/cache_go/core/somaxconn: no such file or directory"}
+cache-go/cache_go.init.0
+	/home/lqf/golang/GoProject/cache-go/cache_go/socket.go:112
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6222
+runtime.doInit
+	/usr/local/go/src/runtime/proc.go:6199
+runtime.main
+	/usr/local/go/src/runtime/proc.go:233

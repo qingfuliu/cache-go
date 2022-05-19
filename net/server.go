@@ -10,18 +10,24 @@ import (
 type Server struct {
 	listener      *listener
 	mainEventLoop *eventLoop
-	lb            loadBalance
+	lb            LoadBalance
 	eventHandle   EventHandler
 	wg            sync.WaitGroup
 	cond          *sync.Cond
 	codeC         CodeC
-	//trickCtx      context.Context
-	//trickFunc     context.CancelFunc
-	//peerGetters   map[string]cache_go.PeerGetter
-	//consistentMap *consistentHash.ConsistentMap
 }
 
-func NewServer(proto, addr string, codeC CodeC, lb loadBalance, handler EventHandler, listenerOpts ...SocketOpt) (s *Server, err error) {
+func NewDefaultServer(addr string, handler EventHandler) (*Server, error) {
+	return NewServer(
+		"tcp",
+		addr,
+		NewDefaultLengthFieldBasedFrameCodec(),
+		newDefaultHashBalance(),
+		handler,
+		SetReuseAddr(1))
+}
+
+func NewServer(proto, addr string, codeC CodeC, lb LoadBalance, handler EventHandler, listenerOpts ...SocketOpt) (s *Server, err error) {
 	s = new(Server)
 	s.codeC = codeC
 	s.lb = lb
@@ -39,7 +45,7 @@ func NewServer(proto, addr string, codeC CodeC, lb loadBalance, handler EventHan
 
 	listener, err := newListener(proto, addr, listenerOpts...)
 	if err != nil {
-		zap.L().Error("init listener err", zap.Error(err))
+		zap.L().Fatal("init listener err", zap.Error(err))
 		return nil, err
 	}
 	s.listener = listener

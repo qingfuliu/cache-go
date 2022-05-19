@@ -1,0 +1,3 @@
+Thu May 19 11:49:36 2022	DEBUG	Logger	net/asyncQueue_test.go:154	cache-go/net.TestAsyncQueuePop	nums	{"nums": 5000}
+Thu May 19 11:49:39 2022	DEBUG	Logger	net/asyncQueue_test.go:154	cache-go/net.TestAsyncQueuePop	nums	{"nums": 5000}
+Thu May 19 15:48:17 2022	DEBUG	Logger	net/tcpPeerPicker.go:76	cache-go/net.(*tcpPeerPicker).start	----------------------------------Peer  Picker Start--------------------------------------

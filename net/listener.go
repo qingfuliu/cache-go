@@ -16,7 +16,7 @@ type listener struct {
 func newListener(proto, addr string, opts ...SocketOpt) (l *listener, err error) {
 	l = new(listener)
 
-	if l.fd, l.sa, l.localAddr, err = TcpSocket(proto, addr, false, opts...); err != nil {
+	if l.fd, l.sa, l.localAddr, err = TcpSocket(proto, addr, false, true, opts...); err != nil {
 		return nil, err
 	}
 

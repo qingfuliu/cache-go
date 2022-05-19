@@ -19,7 +19,12 @@ type testConn struct {
 func (tC *testConn) Get(ctx context.Context, in proto.Message, out proto.Message) error {
 	return nil
 }
+func (tC *testConn) SetContext(ctx interface{}) {
 
+}
+func (tC *testConn) Context() interface{} {
+	return nil
+}
 func (tC *testConn) Chan() <-chan proto.Message {
 	return nil
 }

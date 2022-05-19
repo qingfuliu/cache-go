@@ -10,6 +10,17 @@ import (
 	"sync/atomic"
 )
 
+func Get(ctx context.Context, groupName, key string, skin byteString.Skin) (err error) {
+	mu.RLock()
+	if cacheHub, ok := gableGetter[groupName]; ok {
+		err = cacheHub.Get(ctx, key, skin)
+	} else {
+		err = GroupDoesNotExists
+	}
+	mu.RUnlock()
+	return
+}
+
 type Getter interface {
 	Get(ctx context.Context, key string, skin byteString.Skin) error
 }
@@ -26,7 +37,7 @@ type Setter interface {
 
 var (
 	gableGetter = make(map[string]Getter)
-	mu          sync.Mutex
+	mu          sync.RWMutex
 )
 
 func getGetter(key string) (g Getter, ok bool) {
@@ -40,6 +51,7 @@ func NewCacheHub(name string, getter Getter, maxBytes int64) *CacheHub {
 	}
 	mu.Lock()
 	if _, ok := gableGetter[name]; ok {
+		mu.Unlock()
 		return nil
 	}
 	cache := &CacheHub{
@@ -51,8 +63,8 @@ func NewCacheHub(name string, getter Getter, maxBytes int64) *CacheHub {
 		getter:     getter,
 		state:      NewCacheState(),
 	}
-	defer mu.Unlock()
 	gableGetter[name] = cache
+	mu.Unlock()
 	return cache
 }
 
@@ -60,7 +72,7 @@ type CacheHub struct {
 	name       string
 	localCache *cache
 	hotCache   *cache
-	picker     peerPicker
+	picker     PeerPicker
 	mu         sync.RWMutex
 	barrier    Barrier
 	maxBytes   int64
@@ -93,10 +105,10 @@ func (c *CacheHub) load(ctx context.Context, key string) (val byteString.ByteStr
 			return
 		}
 		c.once.Do(func() {
-			c.picker = GetPeerPicker()
+			c.picker = getPeerPicker()
 		})
 
-		peer, ok = c.picker.GetPeer(key)
+		peer, ok = c.picker.GetPeer(key, ctx)
 		if ok {
 			view_, err = c.getFromPeer(ctx, peer, key)
 		} else {
@@ -151,12 +163,12 @@ func (c *CacheHub) getLocally(ctx context.Context, key string) (byteString.ByteS
 
 func (c *CacheHub) getFromPeer(ctx context.Context, peer PeerGetter, key string) (val byteString.ByteString, err error) {
 	c.state.addNumPeerGet()
-	in := msg.GetRequest{
+	in := &msg.GetRequest{
 		Key:       key,
 		CacheName: c.name,
 	}
-	out := msg.GetResponse{}
-	err = peer.Get(ctx, &in, &out)
+	out := &msg.GetResponse{}
+	err = peer.Get(ctx, in, out)
 	if err != nil {
 		c.state.addNumsPeerMiss()
 		return byteString.ByteString{}, err
@@ -165,10 +177,10 @@ func (c *CacheHub) getFromPeer(ctx context.Context, peer PeerGetter, key string)
 		return byteString.ByteString{}, errors.New(out.Error)
 	}
 
-	byteString := byteString.NewByteStringSkin()
-	byteString.SetString(out.Val)
+	bs := byteString.NewByteStringSkin()
+	bs.SetString(out.Val)
 	c.state.addNumsPeerHit()
-	return byteString.View(), err
+	return bs.View(), err
 }
 
 func (c *CacheHub) Get(ctx context.Context, key string, skin byteString.Skin) error {

@@ -3,6 +3,7 @@ package net
 import (
 	"cache-go/net/pool/slicePool"
 	"context"
+	"fmt"
 	"github.com/golang/protobuf/proto"
 	"github.com/valyala/bytebufferpool"
 	"golang.org/x/sys/unix"
@@ -12,13 +13,14 @@ import (
 
 type Conn interface {
 	Get(ctx context.Context, in proto.Message, out proto.Message) error
-	Chan() <-chan proto.Message
 	Close() error
 	PeekAll() []byte
 	ShiftN(n int) int
 	ResetBuf()
 	Len() int
 	AsyncWrite(p []byte) error
+	SetContext(ctx interface{})
+	Context() interface{}
 }
 
 type conn struct {
@@ -38,6 +40,7 @@ type conn struct {
 	closed                bool
 	e                     *eventLoop
 	writeState            int32
+	ctx                   interface{}
 }
 
 func NewConn(fd int, codeC CodeC, unixAddr unix.Sockaddr, localAddr, remoteAddr net.Addr) *conn {
@@ -54,6 +57,12 @@ func NewConn(fd int, codeC CodeC, unixAddr unix.Sockaddr, localAddr, remoteAddr 
 	}
 }
 
+func (c *conn) SetContext(ctx interface{}) {
+	c.ctx = ctx
+}
+func (c *conn) Context() interface{} {
+	return c.ctx
+}
 func (c *conn) FD() int {
 	return c.fd
 }
@@ -145,9 +154,11 @@ func (c *conn) writeV(p [][]byte) (n int, err error) {
 
 	return
 }
+func (c *conn) close() (err error) {
+	if c.closed {
+		return nil
+	}
 
-func (c *conn) Close() error {
-	c.closed = true
 	if c.cache != nil {
 		bytebufferpool.Put(c.cache)
 		c.cache = nil
@@ -156,7 +167,17 @@ func (c *conn) Close() error {
 	c.inBoundBuffer.Release()
 	c.outBoundBuffer.Release()
 	//close(c.msgChan)
-	return unix.Close(c.fd)
+	err = unix.Close(c.fd)
+	if err = c.e.closeConn(c.fd); err != nil {
+		fmt.Println(err)
+	}
+	c.closed = true
+	return
+}
+func (c *conn) Close() error {
+	return c.e.poller.AddUrgentTask(func(interface{}) (err error) {
+		return c.e.closeConn(c.fd)
+	}, nil)
 }
 
 func (c *conn) PeekAll() []byte {

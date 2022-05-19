@@ -1,10 +1,10 @@
 package cache_go
 
 import (
+	"cache-go/msg"
 	"context"
-	"github.com/golang/protobuf/proto"
 )
 
 type PeerGetter interface {
-	Get(ctx context.Context, in proto.Message, out proto.Message) error
+	Get(ctx context.Context, in *msg.GetRequest, out *msg.GetResponse) error
 }

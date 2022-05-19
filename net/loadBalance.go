@@ -5,7 +5,7 @@ import (
 	"net"
 )
 
-type loadBalance interface {
+type LoadBalance interface {
 	Next(addr net.Addr) *eventLoop
 	iterator(func(loop *eventLoop) bool) *eventLoop
 	register(*eventLoop)
@@ -22,14 +22,14 @@ type HashLoadBalance struct {
 	hash  HashFunc
 }
 
-func newDefaultHashBalance() loadBalance {
+func newDefaultHashBalance() LoadBalance {
 	return &HashLoadBalance{
 		hash:  defaultHashFunc,
 		loops: make([]*eventLoop, 0),
 	}
 }
 
-func newHashBalance(hash HashFunc) loadBalance {
+func newHashBalance(hash HashFunc) LoadBalance {
 	if hash == nil {
 		return nil
 	}
@@ -40,7 +40,7 @@ func newHashBalance(hash HashFunc) loadBalance {
 }
 
 func (hash *HashLoadBalance) Next(addr net.Addr) *eventLoop {
-	//zap.L().Debug("length of the loadBalance", zap.Int("length", len(hash.loops)))
+	//zap.L().Debug("length of the LoadBalance", zap.Int("length", len(hash.loops)))
 	index := int(hash.hash(addr.String())) % len(hash.loops)
 	return hash.loops[index]
 }

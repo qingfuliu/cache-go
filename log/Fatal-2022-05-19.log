@@ -1,0 +1,13 @@
+Thu May 19 11:49:48 2022	FATAL	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*tcpPeerConnector).Connect
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerConnector.go:25
+cache-go/net.(*tcpPeerGetterPool).newConnection
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:302
+cache-go/net.(*tcpPeerGetterPool).Conn
+	/home/lqf/golang/GoProject/cache-go/net/peerGetterPool.go:236
+cache-go/net.TestNewTcpPeerGetterPool
+	/home/lqf/golang/GoProject/cache-go/net/tcpPeerGetter_test.go:13
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439

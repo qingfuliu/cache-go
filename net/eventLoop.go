@@ -20,15 +20,28 @@ type eventLoop struct {
 	eventHandle EventHandler
 }
 
+func newEventLoopWithEventHandle(p *poller, handle EventHandler) (el *eventLoop) {
+	el = &eventLoop{
+		eventHandle: handle,
+		poller:      p,
+		connections: make(map[int]*conn),
+		buffer:      make([]byte, MaximumQuantityPreTime), //slicePool.get(MaxTasksPreLoop),
+	}
+	p.el = el
+	return
+}
+
 func newEventLoop(s *Server, p *poller) (el *eventLoop) {
 	el = &eventLoop{
 		s:           s,
 		poller:      p,
 		connections: make(map[int]*conn),
-		buffer:      make([]byte, MaximumQuantityPreTime), //slicePool.Get(MaxTasksPreLoop),
-		eventHandle: s.eventHandle,
+		buffer:      make([]byte, MaximumQuantityPreTime), //slicePool.get(MaxTasksPreLoop),
 	}
 	p.el = el
+	if s != nil {
+		el.eventHandle = s.eventHandle
+	}
 	return
 }
 
@@ -40,13 +53,13 @@ func (el *eventLoop) closeAllConn() {
 	el.connections = nil
 }
 
-func (el *eventLoop) closeConn(fd int) error {
+func (el *eventLoop) closeConn(fd int) (err error) {
 	if c, ok := el.connections[fd]; ok {
 		delete(el.connections, c.fd)
 		_ = el.poller.Delete(c.fd)
-		return c.Close()
+		err = c.close()
 	}
-	return nil
+	return
 }
 
 func (el *eventLoop) Close() (err error) {
@@ -63,6 +76,7 @@ func (el *eventLoop) register(c *conn) error {
 		return err
 	}
 	c.e = el
+	c.closed = false
 	return nil
 }
 
@@ -75,9 +89,7 @@ func (el *eventLoop) asyncRegister(c *conn) error {
 var testNum int32
 
 func (el *eventLoop) read(c *conn) error {
-
 	n, err := unix.Read(c.fd, el.buffer)
-
 	if err != nil {
 		switch err {
 		case unix.EAGAIN, unix.EINTR:
@@ -87,8 +99,7 @@ func (el *eventLoop) read(c *conn) error {
 			return err
 		}
 	} else if n == 0 {
-		_ = el.closeConn(c.fd)
-		return nil
+		return c.e.closeConn(c.fd)
 	}
 
 	c.buffer = el.buffer[:n]

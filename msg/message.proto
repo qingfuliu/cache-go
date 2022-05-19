@@ -1,17 +1,17 @@
-syntax="proto3";
+syntax = "proto3";
 
 package proto;
-option go_package="./;msg";
+option go_package = "./;msg";
 
 message GetResponse{
-  string Val=2;
-  string Error=1;
+  string Val = 2;
+  string Error = 1;
 }
 
 
 message GetRequest{
-  string Key=1;
-  string CacheName=2;
+  string Key = 1;
+  string CacheName = 2;
 }
 
 

@@ -168,7 +168,7 @@ func (p *poller) Ticker() (err error) {
 }
 
 var (
-	readEvent      uint32 = unix.EPOLLPRI | unix.EPOLLIN
+	readEvent      uint32 = unix.EPOLLPRI | unix.EPOLLIN | unix.EPOLLRDHUP
 	writeEvent     uint32 = unix.EPOLLOUT
 	readWriteEvent        = readEvent | writeEvent
 )
