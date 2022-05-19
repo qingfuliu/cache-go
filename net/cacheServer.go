@@ -33,7 +33,9 @@ func (c *TcpCacheServer) React(message []byte, conn Conn) (data []byte, err erro
 	ctx, cancelFunc := context.WithTimeout(context.Background(), c.reactTimeOut)
 	err = cache_go.Get(ctx, in.CacheName, in.Key, skin)
 	defer cancelFunc()
-	out.Error = err.Error()
+	if err != nil {
+		out.Error = err.Error()
+	}
 	out.Val = str
 	data, err = proto.Marshal(out)
 	return
