@@ -17,10 +17,23 @@ var defaultHashFunc HashFunc = func(str string) uint32 {
 	return crc32.ChecksumIEEE([]byte(str))
 }
 
-type HashLoadBalance struct {
-	loops []*eventLoop
-	hash  HashFunc
-}
+type (
+	HashLoadBalance struct {
+		loops []*eventLoop
+		hash  HashFunc
+	}
+
+	IteratorLoadBalance struct {
+		loops []*eventLoop
+		next  int
+	}
+
+	LeastLoadBalance struct {
+		loops []*eventLoop
+	}
+)
+
+//==================================================hash loadBalance================================================//
 
 func newDefaultHashBalance() LoadBalance {
 	return &HashLoadBalance{
@@ -54,4 +67,52 @@ func (hash *HashLoadBalance) iterator(fun func(loop *eventLoop) bool) *eventLoop
 }
 func (hash *HashLoadBalance) register(el *eventLoop) {
 	hash.loops = append(hash.loops, el)
+}
+
+//==================================================iterator loadBalance================================================//
+
+func (iterator *IteratorLoadBalance) Next(addr net.Addr) (loop *eventLoop) {
+	loop = iterator.loops[iterator.next]
+	iterator.next++
+	if iterator.next == len(iterator.loops) {
+		iterator.next = 0
+	}
+	return
+}
+func (iterator *IteratorLoadBalance) iterator(fun func(loop *eventLoop) bool) *eventLoop {
+	for i := range iterator.loops {
+		if !fun(iterator.loops[i]) {
+			return iterator.loops[i]
+		}
+	}
+	return nil
+}
+func (iterator *IteratorLoadBalance) register(el *eventLoop) {
+	iterator.loops = append(iterator.loops, el)
+}
+
+//===================================================
+func (least *LeastLoadBalance) Next(addr net.Addr) (loop *eventLoop) {
+	min := least.loops[0].loadCountConn()
+	loop = least.loops[0]
+	for i := range least.loops {
+		temp := least.loops[i].connCount
+		if min > temp {
+			min = temp
+			loop = least.loops[i]
+		}
+	}
+	return
+}
+func (least *LeastLoadBalance) iterator(fun func(loop *eventLoop) bool) *eventLoop {
+	for i := range least.loops {
+		if !fun(least.loops[i]) {
+			return least.loops[i]
+		}
+	}
+	return nil
+}
+
+func (least *LeastLoadBalance) register(el *eventLoop) {
+	least.loops = append(least.loops, el)
 }

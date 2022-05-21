@@ -2,6 +2,8 @@ package cache_go
 
 import (
 	"cache-go/byteString"
+	"cache-go/cache"
+	"cache-go/cache/lfu"
 	"cache-go/msg"
 	"context"
 	"errors"
@@ -45,7 +47,7 @@ func getGetter(key string) (g Getter, ok bool) {
 	return
 }
 
-func NewCacheHub(name string, getter Getter, maxBytes int64) *CacheHub {
+func NewCacheHub(name string, getter Getter, maxBytes int64, options ...CacheHubOption) *CacheHub {
 	if getter == nil {
 		return nil
 	}
@@ -54,24 +56,45 @@ func NewCacheHub(name string, getter Getter, maxBytes int64) *CacheHub {
 		mu.Unlock()
 		return nil
 	}
-	cache := &CacheHub{
-		name:       name,
-		maxBytes:   maxBytes,
-		hotCache:   NewCache(),
-		localCache: NewCache(),
-		barrier:    NewBarrier(),
-		getter:     getter,
-		state:      NewCacheState(),
+	cacheHub := &CacheHub{
+		name:     name,
+		maxBytes: maxBytes,
+		barrier:  NewBarrier(),
+		getter:   getter,
+		state:    NewCacheState(),
 	}
-	gableGetter[name] = cache
+	for _, val := range options {
+		val(cacheHub)
+	}
+	if cacheHub.localCache == nil {
+		cacheHub.localCache = cache.NewLruCache()
+		cacheHub.hotCache = cache.NewLruCache()
+	}
+	gableGetter[name] = cacheHub
 	mu.Unlock()
-	return cache
+	return cacheHub
+}
+
+type CacheHubOption func(hub *CacheHub)
+
+func SetLruCache() CacheHubOption {
+	return func(hub *CacheHub) {
+		hub.localCache = cache.NewLruCache()
+		hub.hotCache = cache.NewLruCache()
+	}
+}
+
+func SetLfuCache() CacheHubOption {
+	return func(hub *CacheHub) {
+		hub.localCache = lfu.NewLfuCache()
+		hub.hotCache = lfu.NewLfuCache()
+	}
 }
 
 type CacheHub struct {
 	name       string
-	localCache *cache
-	hotCache   *cache
+	localCache cache.GoCache
+	hotCache   cache.GoCache
 	picker     PeerPicker
 	mu         sync.RWMutex
 	barrier    Barrier
@@ -84,10 +107,10 @@ type CacheHub struct {
 func (c *CacheHub) getFromLocal(key string) (val byteString.ByteString, ok bool) {
 	c.mu.RLock()
 	defer c.mu.RUnlock()
-	if val, ok = c.localCache.get(key); ok {
+	if val, ok = c.localCache.Get(key); ok {
 		return
 	}
-	if val, ok = c.hotCache.get(key); ok {
+	if val, ok = c.hotCache.Get(key); ok {
 		return
 	}
 	return
@@ -127,21 +150,20 @@ func (c *CacheHub) load(ctx context.Context, key string) (val byteString.ByteStr
 		c.mu.Lock()
 		defer c.mu.Unlock()
 		if !ok {
-			c.localCache.add(key, view_)
+			c.localCache.Add(key, view_)
 		} else if rand.Intn(10) == 0 {
-			c.hotCache.add(key, view_)
+			c.hotCache.Add(key, view_)
 		}
 
-		totalBytes := c.hotCache.nBytes + c.localCache.nBytes
+		totalBytes := c.hotCache.NBytes() + c.localCache.NBytes()
 		if totalBytes < c.maxBytes {
 			return
 		}
 		victim := c.hotCache
-		if c.localCache.nBytes > victim.nBytes {
+		if c.localCache.NBytes() > victim.NBytes() {
 			victim = c.localCache
 		}
-		victim.eliminate(totalBytes - c.maxBytes)
-
+		victim.Eliminate(totalBytes - c.maxBytes)
 		return
 	})
 	if err == nil {
@@ -160,7 +182,7 @@ func (c *CacheHub) getLocally(ctx context.Context, key string) (byteString.ByteS
 		return byteString.ByteString{}, err
 	}
 	bs := skin.View()
-	c.localCache.add(key, bs)
+	c.localCache.Add(key, bs)
 	return bs, nil
 }
 
@@ -204,12 +226,12 @@ func (c *CacheHub) Get(ctx context.Context, key string, skin byteString.Skin) er
 }
 
 type CacheState struct {
-	numsGet      AtomicInt64 //nums of the total request
-	numsPeerGet  AtomicInt64 //the number of times the local cache was miss but the peer search was hit
-	numsHit      AtomicInt64 //nums of the total hit
-	numsPeerHit  AtomicInt64 //the number of times the peer search was  hit
-	numsMiss     AtomicInt64 //the number of times the search was missed both local and peer
-	numsPeerMiss AtomicInt64
+	numsGet      cache.AtomicInt64 //nums of the total request
+	numsPeerGet  cache.AtomicInt64 //the number of times the local cache was miss but the peer search was hit
+	numsHit      cache.AtomicInt64 //nums of the total hit
+	numsPeerHit  cache.AtomicInt64 //the number of times the peer search was  hit
+	numsMiss     cache.AtomicInt64 //the number of times the search was missed both local and peer
+	numsPeerMiss cache.AtomicInt64
 }
 
 func NewCacheState() *CacheState {

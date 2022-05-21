@@ -57,7 +57,7 @@ func newTcpPeerPicker(cacheServer *TcpCacheServer) *tcpPeerPicker {
 		wg:              &sync.WaitGroup{},
 		failedRetry:     10,
 	}
-	//tcpPicker.remoteAddr = append(tcpPicker.remoteAddr, cacheServer.localAddr.String())
+	tcpPicker.remoteAddr = append(tcpPicker.remoteAddr, cacheServer.localAddr.String())
 	cache_go.RegisterGetPeerPickerFunc(tcpPicker)
 	return tcpPicker
 }

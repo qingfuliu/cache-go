@@ -40,6 +40,7 @@ func (c *TcpCacheServer) React(message []byte, conn Conn) (data []byte, err erro
 	data, err = proto.Marshal(out)
 	return
 }
+
 func NewTcpCacheServer(proto, addr string, codeC CodeC, lb LoadBalance, listenerOpts ...SocketOpt) (tCS *TcpCacheServer, err error) {
 	tCS = new(TcpCacheServer)
 	tCS.s, err = NewServer(proto, addr, codeC, lb, tCS, listenerOpts...)
@@ -51,6 +52,7 @@ func NewTcpCacheServer(proto, addr string, codeC CodeC, lb LoadBalance, listener
 	tCS.peerPicker = newTcpPeerPicker(tCS)
 	return
 }
+
 func (c *TcpCacheServer) Start(lockOsThread bool, numReactor int, option ...TcpPoolOption) error {
 	zap.L().Info("----------------------------------cache Server Start--------------------------------------")
 	zap.L().Info("info:", zap.String("localAddr", c.localAddr.String()), zap.Duration("react timeout", c.reactTimeOut))

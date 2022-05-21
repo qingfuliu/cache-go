@@ -27,13 +27,14 @@ func TestNewTcpCacheServer(t *testing.T) {
 		return cache_go.KeyDoesNotExists
 	}
 
-	cache_go.NewCacheHub("lqf", getFunc, 1024)
-	p, err := NewTcpCacheServer("tcp", "127.0.0.1:8081", NewDefaultLengthFieldBasedFrameCodec(), newDefaultHashBalance(), SetReuseAddr(1))
+	cache_go.NewCacheHub("lqf", getFunc, 1024, cache_go.SetLfuCache())
+	p, err := NewTcpCacheServer("tcp", ":8081", NewDefaultLengthFieldBasedFrameCodec(), newDefaultHashBalance(), SetReuseAddr(1))
 	if err != nil {
 		t.Fatal(err)
 	}
-	_ = p.AddRemoteAddr("tcp", "192.168.1.103:8081")
+	//_ = p.AddRemoteAddr("tcp", ":5201")
 	go p.Start(false, -1, SetMaxOpen(20), SetMaxLife(time.Second*10), SetMaxIdle(10))
+
 	time.Sleep(time.Second)
 	wg := &sync.WaitGroup{}
 	for i := 0; i < count; i++ {
@@ -43,7 +44,7 @@ func TestNewTcpCacheServer(t *testing.T) {
 		wg.Add(1)
 		go func() {
 			var s string
-			err = cache_go.Get(context.Background(), "lqf", "lqf8", byteString.NewStringSkin(&s))
+			err = cache_go.Get(context.Background(), "lqf", "lqf7", byteString.NewStringSkin(&s))
 			fmt.Println("err", err, "s", s)
 			wg.Done()
 		}()

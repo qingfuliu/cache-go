@@ -18,6 +18,7 @@ type eventLoop struct {
 	connections map[int]*conn
 	buffer      []byte
 	eventHandle EventHandler
+	connCount   int32
 }
 
 func newEventLoopWithEventHandle(p *poller, handle EventHandler) (el *eventLoop) {
@@ -45,16 +46,19 @@ func newEventLoop(s *Server, p *poller) (el *eventLoop) {
 	return
 }
 
+func (el *eventLoop) loadCountConn() int32 {
+	return atomic.LoadInt32(&el.connCount)
+}
+
 func (el *eventLoop) closeAllConn() {
-	for _, val := range el.connections {
-		_ = val.Close()
-		_ = el.poller.Delete(val.fd)
+	for key := range el.connections {
+		_ = el.closeConn(key)
 	}
-	el.connections = nil
 }
 
 func (el *eventLoop) closeConn(fd int) (err error) {
 	if c, ok := el.connections[fd]; ok {
+		atomic.AddInt32(&el.connCount, -1)
 		delete(el.connections, c.fd)
 		_ = el.poller.Delete(c.fd)
 		err = c.close()
@@ -71,6 +75,7 @@ func (el *eventLoop) Close() (err error) {
 }
 
 func (el *eventLoop) register(c *conn) error {
+	atomic.AddInt32(&el.connCount, 1)
 	el.connections[c.FD()] = c
 	if err := el.poller.AddRead(c.FD()); err != nil {
 		return err

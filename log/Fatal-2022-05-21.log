@@ -1,0 +1,9 @@
+Sat May 21 22:46:49 2022	FATAL	Logger	net/server.go:48	cache-go/net.NewServer	init listener err	{"error": "address already in use"}
+cache-go/net.NewServer
+	/home/lqf/golang/GoProject/cache-go/net/server.go:48
+cache-go/net.NewTcpCacheServer
+	/home/lqf/golang/GoProject/cache-go/net/cacheServer.go:45
+cache-go/net.TestNewTcpCacheServer
+	/home/lqf/golang/GoProject/cache-go/net/cacheServer_test.go:31
+testing.tRunner
+	/usr/local/go/src/testing/testing.go:1439
