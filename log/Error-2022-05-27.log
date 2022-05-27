@@ -1,0 +1,500 @@
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76
+Fri May 27 15:21:41 2022	ERROR	Logger	net/socket.go:147	cache-go/net.TcpSocket	connect fatal!	{"error": "connection refused"}
+cache-go/net.TcpSocket
+	/home/lqf/golang/GoProject/cache-go/net/socket.go:147
+cache-go/net.(*Client).Connect.func1
+	/home/lqf/golang/GoProject/cache-go/net/client.go:76

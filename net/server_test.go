@@ -22,11 +22,11 @@ func (e *echo) React(b []byte, c Conn) ([]byte, error) {
 }
 
 //func TestNewServer(t *testing.T) {
-//	s, err := NewServer("tcp", ":5201", nil, nil, &echo{}, SetReuseAddr(1))
+//	handlerGetter, err := NewServer("tcp", ":5201", nil, nil, &echo{}, SetReuseAddr(1))
 //	if err != nil {
 //		t.Fatal(err)
 //	}
-//	err = s.start(false, -1)
+//	err = handlerGetter.start(false, -1)
 //	t.Log(err)
 //}
 

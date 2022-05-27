@@ -12,6 +12,7 @@ type (
 		Encode(bytes []byte) ([]byte, error)
 		//Decode when read
 		Decode(c Conn) ([]byte, error)
+		String() string
 	}
 
 	LengthFieldBasedFrameCodec struct {
@@ -60,6 +61,9 @@ type DecoderConfig struct {
 	InitialBytesToStrip int64
 }
 
+func (LBC *LengthFieldBasedFrameCodec) String() string {
+	return "type:LengthFieldBasedFrameCodec"
+}
 func (LBC *LengthFieldBasedFrameCodec) Encode(bytes []byte) ([]byte, error) {
 	lengthField := int64(len(bytes)) + LBC.encoderConfig.LengthAdjustment
 	if LBC.encoderConfig.IncludeLengthFieldLength {
@@ -137,6 +141,11 @@ func (LBC *LengthFieldBasedFrameCodec) Decode(c Conn) ([]byte, error) {
 func NewNothingCodec() CodeC {
 	return &NothingCodec{}
 }
+
+func (codec *NothingCodec) String() string {
+	return "type:NothingCodec"
+}
+
 func (codec *NothingCodec) Encode(bytes []byte) ([]byte, error) {
 	data := slicePool.Get(len(bytes))
 	copy(data, bytes)

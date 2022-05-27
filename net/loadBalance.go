@@ -35,14 +35,14 @@ type (
 
 //==================================================hash loadBalance================================================//
 
-func newDefaultHashBalance() LoadBalance {
+func NewDefaultHashBalance() LoadBalance {
 	return &HashLoadBalance{
 		hash:  defaultHashFunc,
 		loops: make([]*eventLoop, 0),
 	}
 }
 
-func newHashBalance(hash HashFunc) LoadBalance {
+func NewHashBalance(hash HashFunc) LoadBalance {
 	if hash == nil {
 		return nil
 	}

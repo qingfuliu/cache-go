@@ -13,12 +13,12 @@ var (
 )
 
 type eventLoop struct {
-	s           *Server
-	poller      *poller
-	connections map[int]*conn
-	buffer      []byte
-	eventHandle EventHandler
-	connCount   int32
+	handlerGetter HandlerContainer
+	poller        *poller
+	connections   map[int]*conn
+	buffer        []byte
+	eventHandle   EventHandler
+	connCount     int32
 }
 
 func newEventLoopWithEventHandle(p *poller, handle EventHandler) (el *eventLoop) {
@@ -32,16 +32,16 @@ func newEventLoopWithEventHandle(p *poller, handle EventHandler) (el *eventLoop)
 	return
 }
 
-func newEventLoop(s *Server, p *poller) (el *eventLoop) {
+func newEventLoop(s HandlerContainer, p *poller) (el *eventLoop) {
 	el = &eventLoop{
-		s:           s,
-		poller:      p,
-		connections: make(map[int]*conn),
-		buffer:      make([]byte, MaximumQuantityPreTime), //slicePool.get(MaxTasksPreLoop),
+		handlerGetter: s,
+		poller:        p,
+		connections:   make(map[int]*conn),
+		buffer:        make([]byte, MaximumQuantityPreTime), //slicePool.get(MaxTasksPreLoop),
 	}
 	p.el = el
 	if s != nil {
-		el.eventHandle = s.eventHandle
+		el.eventHandle = s.getHandler()
 	}
 	return
 }
@@ -76,13 +76,17 @@ func (el *eventLoop) Close() (err error) {
 
 func (el *eventLoop) register(c *conn) error {
 	atomic.AddInt32(&el.connCount, 1)
+	c.closed = false
 	el.connections[c.FD()] = c
 	if err := el.poller.AddRead(c.FD()); err != nil {
+		_ = c.close()
 		return err
 	}
 	c.e = el
-	c.closed = false
-	return nil
+
+	err := el.eventHandle.OnEstablish(c)
+
+	return err
 }
 
 func (el *eventLoop) asyncRegister(c *conn) error {
@@ -192,14 +196,14 @@ func (el *eventLoop) startSubReactors(lockOsThread bool) (err error) {
 	return
 }
 
-func (el *eventLoop) startMainReactor() (err error) {
-	runtime.LockOSThread()
-	defer runtime.UnlockOSThread()
-	if err = el.poller.Poller(func(fd int32, event uint32) (err error) {
-		return el.s.accept(int(fd))
-	}); err != nil {
-		zap.L().Fatal("mainReactor err:", zap.Error(err))
-	}
-	zap.L().Info("main Reactor shut down")
-	return
-}
+//func (el *eventLoop) startMainReactor() (err error) {
+//	runtime.LockOSThread()
+//	defer runtime.UnlockOSThread()
+//	if err = el.poller.Poller(func(fd int32, event uint32) (err error) {
+//		return el.handlerGetter.accept(int(fd))
+//	}); err != nil {
+//		zap.L().Fatal("mainReactor err:", zap.Error(err))
+//	}
+//	zap.L().Info("main Reactor shut down")
+//	return
+//}

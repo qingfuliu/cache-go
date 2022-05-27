@@ -7,4 +7,5 @@ import (
 
 type PeerGetter interface {
 	Get(ctx context.Context, in *msg.GetRequest, out *msg.GetResponse) error
+	Close() error
 }

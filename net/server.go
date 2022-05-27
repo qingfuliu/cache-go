@@ -7,6 +7,10 @@ import (
 	"sync"
 )
 
+type HandlerContainer interface {
+	getHandler() EventHandler
+}
+
 type Server struct {
 	listener      *listener
 	mainEventLoop *eventLoop
@@ -22,7 +26,7 @@ func NewDefaultServer(addr string, handler EventHandler) (*Server, error) {
 		"tcp",
 		addr,
 		NewDefaultLengthFieldBasedFrameCodec(),
-		newDefaultHashBalance(),
+		NewDefaultHashBalance(),
 		handler,
 		SetReuseAddr(1))
 }
@@ -40,7 +44,7 @@ func NewServer(proto, addr string, codeC CodeC, lb LoadBalance, handler EventHan
 		s.eventHandle = NewDefaultHandler()
 	}
 	if lb == nil {
-		s.lb = newDefaultHashBalance()
+		s.lb = NewDefaultHashBalance()
 	}
 
 	listener, err := newListener(proto, addr, listenerOpts...)
@@ -54,6 +58,10 @@ func NewServer(proto, addr string, codeC CodeC, lb LoadBalance, handler EventHan
 	s.cond = sync.NewCond(&sync.Mutex{})
 
 	return
+}
+
+func (s *Server) getHandler() EventHandler {
+	return s.eventHandle
 }
 
 func (s *Server) Start(lockOsThread bool, numReactors int) (err error) {
@@ -87,7 +95,7 @@ func (s *Server) Start(lockOsThread bool, numReactors int) (err error) {
 	zap.L().Info("mainReactors starting ...")
 	go func() {
 		s.wg.Add(1)
-		_ = el.startMainReactor()
+		_ = s.startMainReactor(el)
 		s.wg.Done()
 	}()
 	return s.afterShutDown()
@@ -132,4 +140,16 @@ func (s *Server) startSubReactors(lockOsThread bool) {
 		}()
 		return true
 	})
+}
+
+func (s *Server) startMainReactor(el *eventLoop) (err error) {
+	runtime.LockOSThread()
+	defer runtime.UnlockOSThread()
+	if err = el.poller.Poller(func(fd int32, event uint32) (err error) {
+		return s.accept(int(fd))
+	}); err != nil {
+		zap.L().Fatal("mainReactor err:", zap.Error(err))
+	}
+	zap.L().Info("main Reactor shut down")
+	return
 }
